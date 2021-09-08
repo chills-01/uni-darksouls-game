@@ -48,7 +48,6 @@ public class ResetManager {
      * FIXME: it does nothing, you need to implement it :)
      */
     public void run(){
-
     }
 
     /**

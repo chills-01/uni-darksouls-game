@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.WeaponItem;
 
 public class MeleeWeapon extends WeaponItem {
