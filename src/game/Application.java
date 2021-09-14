@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
 import game.enemies.Undead;
 import game.enemies.YhormTheGiant;
+import game.ground.*;
 
 /**
  * The main class for the Jurassic World game.
@@ -21,7 +22,8 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
+					new Cemetery(), new Bonfire()); // changed this, put in string?
 
 			List<String> map = Arrays.asList(
 					"..++++++..+++...........................++++......+++.................+++.......",
