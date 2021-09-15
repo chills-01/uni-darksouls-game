@@ -10,7 +10,7 @@
 * [x] Make Cemetary class
 * [x] Make Bonfire class
 * [x] Refactor into Ground package and `GroundType.java` abstract
-* [ ] Method for spawning undead in `Cemetary.java`
+* [x] Method for spawning undead in `Cemetary.java`
 
 ## Items (*Devshi*)
 * [ ] Make Estus flask item
