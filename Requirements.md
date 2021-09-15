@@ -5,6 +5,8 @@
 * [x] LordOfCinder (abstract) -> YhormTheGiant
 * [x] Skeleton
 * [x] Refactor this package
+* [ ] Abstract enemy functionality
+* [ ] Make enemies hostile
 
 ## Ground (*Carter*)
 * [x] Make Cemetary class
@@ -27,7 +29,11 @@
 
 
 ## Weapons
+* [ ] Add all weapons + add to enemies / player
 
 ## Actions
+* [ ] Refactor actions
+* [ ] Add attack behaviour (same as wander)
+* 
 
 ## Reset
