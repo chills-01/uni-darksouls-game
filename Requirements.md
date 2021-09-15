@@ -1,18 +1,18 @@
 # Requirements for Design O'Souls
 
-## Enemies
-* [ ] Enemy abstract class
-* [ ] LordOfCinder (abstract) -> YhormTheGiant
-* [ ] Skeleton
-* [ ] Refactor this package
+## Enemies (*Carter*)
+* [x] Enemy abstract class
+* [x] LordOfCinder (abstract) -> YhormTheGiant
+* [x] Skeleton
+* [x] Refactor this package
 
-## Ground
-* [ ] Make Cemetary class
-* [ ] Make Bonfire class
-* [ ] Refactor into Ground package and `GroundType.java` abstract
-* [ ] Method for spawning undead in `Cemetary.java`
+## Ground (*Carter*)
+* [x] Make Cemetary class
+* [x] Make Bonfire class
+* [x] Refactor into Ground package and `GroundType.java` abstract
+* [x] Method for spawning undead in `Cemetary.java`
 
-## Items
+## Items (*Devshi*)
 * [ ] Make Estus flask item
     * Add to Player constructor
     * Implements Consumable (create interface)
