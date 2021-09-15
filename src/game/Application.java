@@ -1,13 +1,12 @@
 package game;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.FancyGroundFactory;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.World;
+import edu.monash.fit2099.engine.*;
+import game.enemies.Skeleton;
 import game.enemies.Undead;
 import game.enemies.YhormTheGiant;
 import game.ground.*;
@@ -61,9 +60,20 @@ public class Application {
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
 
-			// Place a Hollow in the the map
-			// FIXME: the Undead should be generated from the Cemetery
-//			gameMap.at(32, 7).addActor(new Undead("Undead"));
+			//Place Skeletons on map
+			ArrayList<Integer[]> skeletonCoordinates = new ArrayList<>();
+			skeletonCoordinates.add(new Integer[] {10,10});
+			skeletonCoordinates.add(new Integer[] {20,20});
+
+
+			// todo: for this to wok properly, abstract undead functionality to all enemies
+			for (Integer[] loc : skeletonCoordinates) {
+				Integer x = loc[0];
+				Integer y = loc[1];
+				gameMap.at(x, y).addActor(new Skeleton(x, y));
+
+		}
+
 			world.run();
 
 

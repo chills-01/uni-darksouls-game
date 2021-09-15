@@ -4,12 +4,15 @@ import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Location;
 import game.enemies.Undead;
 
-//todo add to gamemap in Application.java?
 public class Cemetery extends Ground {
     public Cemetery() {
         super('X');
     }
 
+    /**
+     * Spawns new Undead 25% of the time
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         // 25% chance of generating undead
