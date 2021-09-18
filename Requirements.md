@@ -15,17 +15,18 @@
 * [x] Method for spawning undead in `Cemetary.java`
 
 ## Items (*Devshi*)
-* [ ] Make Estus flask item
-    * Add to Player constructor
-    * Implements Consumable (create interface)
+* [x] Make Estus flask item
+* [x] Add to Player constructor
+* [x] Implements Consumable (create interface)
 
 `Items.addItemToInventory(new EstusFlask())` in constructor
 
-* [ ] Make the CinderLord item
-    * Add to LordofCinder constructor
+* [x] Make the CinderLord item
+* [x] Add to LordofCinder constructor
 
-* [ ] Make the TokenOfSouls item (implements Souls)
-    * Add to player constructor
+* [x] Make the TokenOfSouls item (implements Souls)
+* [x] Add to player constructor
+* [ ] Override Souls methods
 
 
 ## Weapons
