@@ -18,7 +18,7 @@
 * [x] Make Estus flask item
 * [x] Add to Player constructor
 * [x] Implements Consumable (create interface)
-* [ ] `ConsumeItemAction` implement
+* [x] `ConsumeItemAction` implement
 
 `Items.addItemToInventory(new EstusFlask())` in constructor
 
