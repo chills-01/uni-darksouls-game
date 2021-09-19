@@ -18,6 +18,7 @@
 * [x] Make Estus flask item
 * [x] Add to Player constructor
 * [x] Implements Consumable (create interface)
+* [ ] `ConsumeItemAction` implement
 
 `Items.addItemToInventory(new EstusFlask())` in constructor
 
@@ -29,12 +30,16 @@
 * [ ] Override Souls methods
 
 
-## Weapons
+## Weapons (*Devshi*)
 * [ ] Add all weapons + add to enemies / player
-
-## Actions
+* [ ] Implement attack functionality
 * [ ] Refactor actions
-* [ ] Add attack behaviour (same as wander)
-* 
+* [ ] Implement attack functionality
 
-## Reset
+## Actions (*Carter*)
+* [ ] Add attack behaviour (same as wander)
+
+## Reset (*Carter*)
+* [ ] Rest at bonfire feature
+* [ ] Walking off valley death
+* [ ] Death from zero HP
