@@ -18,7 +18,7 @@
 * [x] Make Estus flask item
 * [x] Add to Player constructor
 * [x] Implements Consumable (create interface)
-* [x] `ConsumeItemAction` implement
+* [ ] `ConsumeItemAction` implement
 
 `Items.addItemToInventory(new EstusFlask())` in constructor
 
@@ -27,7 +27,7 @@
 
 * [x] Make the TokenOfSouls item (implements Souls)
 * [x] Add to player constructor
-* [ ] Override Souls methods
+* [x] Override Souls methods
 
 
 ## Weapons (*Devshi*)
