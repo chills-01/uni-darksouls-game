@@ -16,6 +16,7 @@ import game.interfaces.Soul;
 public class Player extends Actor implements Soul {
 
 	private final Menu menu = new Menu();
+	protected int currentSouls;
 
 	/**
 	 * Constructor.
@@ -26,8 +27,13 @@ public class Player extends Actor implements Soul {
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		this.currentSouls = 0;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
+		//creating Estus flask that is stored in Player's inventory
+		this.addItemToInventory(new EstusFlask());
+		//creating TokenOfSouls that is stored in Player's inventory
+		this.addItemToInventory(new TokenOfSouls());
 	}
 
 	@Override
@@ -41,7 +47,16 @@ public class Player extends Actor implements Soul {
 	}
 
 	@Override
+	public boolean addSouls(int souls) {
+		currentSouls += souls;
+		return true;
+	}
+
+	@Override
 	public void transferSouls(Soul soulObject) {
 		//TODO: transfer Player's souls to another Soul's instance.
 	}
+
+
+
 }
