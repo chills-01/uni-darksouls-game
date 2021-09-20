@@ -30,6 +30,8 @@ public class Player extends Actor implements Soul {
 		this.currentSouls = 0;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
+		this.addCapability(Status.ENTER_FLOOR);
+
 		//creating Estus flask that is stored in Player's inventory
 		this.addItemToInventory(new EstusFlask());
 		//creating TokenOfSouls that is stored in Player's inventory
