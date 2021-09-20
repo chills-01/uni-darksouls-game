@@ -29,12 +29,10 @@
 * [x] Add to player constructor
 * [x] Override Souls methods
 
-
 ## Weapons (*Devshi*)
-* [ ] Add all weapons + add to enemies / player
+* [x] Add all weapons + add to enemies / player
 * [ ] Implement attack functionality
 * [ ] Refactor actions
-* [ ] Implement attack functionality
 
 ## Actions (*Carter*)
 * [ ] Add attack behaviour (same as wander)
