@@ -15,6 +15,7 @@ public interface Soul {
      */
     void transferSouls(Soul soulObject);
 
+
     /**
      * Increase souls to current instance's souls.
      * By default, it cannot increase the souls.
@@ -23,7 +24,8 @@ public interface Soul {
      * @param souls number of souls to be incremented.
      * @return transaction status. True if addition successful, otherwise False.
      */
-    default boolean addSouls(int souls){ return false;}
+    default boolean addSouls(int souls){
+        return false;}
 
     /**
      * Allow other classes to deduct the number of this instance's souls

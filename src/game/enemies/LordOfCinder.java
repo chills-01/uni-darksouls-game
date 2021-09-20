@@ -1,6 +1,7 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.*;
+import game.CinderLordItem;
 
 /**
  * The boss of Design o' Souls
@@ -13,6 +14,7 @@ public abstract class LordOfCinder extends Enemy {
      */
     public LordOfCinder(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints );
+        this.addItemToInventory(new CinderLordItem());
     }
 
     /**
