@@ -19,6 +19,6 @@ public class Skeleton extends Enemy{
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        return null;
+        return new DoNothingAction();
     }
 }
