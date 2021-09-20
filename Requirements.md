@@ -5,7 +5,7 @@
 * [x] LordOfCinder (abstract) -> YhormTheGiant
 * [x] Skeleton
 * [x] Refactor this package
-* [ ] Abstract enemy functionality
+* [x] Abstract enemy functionality
 * [ ] Make enemies hostile
 
 ## Ground (*Carter*)
