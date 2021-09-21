@@ -16,7 +16,7 @@ public abstract class Enemy extends Actor {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours.add(new WanderBehaviour());
-        // todo make attack and follow player
+        // todo make attack
     }
 
     /**

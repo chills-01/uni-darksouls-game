@@ -2,6 +2,7 @@ package game.ground;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Ground;
+import game.enums.Abilities;
 import game.enums.Status;
 
 /**
@@ -14,12 +15,7 @@ public class Floor extends Ground {
 	}
 
 	public boolean canActorEnter(Actor actor) {
-		if (actor.hasCapability(Status.ENTER_FLOOR)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return actor.hasCapability(Abilities.ENTER_FLOOR);
 	}
 
 }

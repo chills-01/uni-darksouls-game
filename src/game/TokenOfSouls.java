@@ -1,5 +1,7 @@
 package game;
 
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.addons.DesignOSoulsAddOn;
 import game.interfaces.Soul;
@@ -15,6 +17,11 @@ public class TokenOfSouls extends Item implements Soul, DesignOSoulsAddOn {
     @Override
     public void transferSouls(Soul soulObject) {
         soulObject.addSouls(souls);
+    }
+
+    @Override
+    public DropItemAction getDropAction(Actor actor) {
+        return null;
     }
 
 
