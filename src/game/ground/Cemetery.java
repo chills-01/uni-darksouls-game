@@ -20,7 +20,7 @@ public class Cemetery extends Ground {
         int upperBound = 4;
         int chance = new java.util.Random().nextInt(upperBound);
 
-        if (chance < 1) {
+        if (chance < 1 && !location.containsAnActor()) {
             location.addActor(new Undead("Undead"));
 
         }
@@ -29,7 +29,7 @@ public class Cemetery extends Ground {
     @Override
     // todo player can step on cemetery
     public boolean canActorEnter(Actor actor) {
-        return false;
+        return true;
     }
 
 }
