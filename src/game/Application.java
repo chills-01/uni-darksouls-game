@@ -66,7 +66,7 @@ public class Application {
 			skeletonCoordinates.add(new Integer[] {20,20});
 
 
-			// todo: for this to wok properly, abstract undead functionality to all enemies
+			// todo: add more skeletons
 			for (Integer[] loc : skeletonCoordinates) {
 				Integer x = loc[0];
 				Integer y = loc[1];

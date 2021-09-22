@@ -131,7 +131,7 @@ public class GameMap {
 	 * @param x X coordinate
 	 * @param y Y coordinate
 	 * @param name name of the Exit
-	 * @param hotKey the hotkey for the appropiate Action
+	 * @param hotKey the hotkey for the appropriate Action
 	 */
 	protected void addExitFromHere(Location here, int x, int y, String name, String hotKey) {
 		if (widths.contains(x) && heights.contains(y)) {

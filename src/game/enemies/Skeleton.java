@@ -16,9 +16,4 @@ public class Skeleton extends Enemy{
         behaviours.add(new WanderBehaviour());
 
     }
-
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        return new DoNothingAction();
-    }
 }

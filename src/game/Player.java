@@ -1,13 +1,9 @@
 package game;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Menu;
+import edu.monash.fit2099.engine.*;
 import game.enums.Abilities;
 import game.enums.Status;
+import game.ground.Valley;
 import game.interfaces.Soul;
 
 /**
@@ -30,6 +26,8 @@ public class Player extends Actor implements Soul {
 		this.currentSouls = 0;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
+		this.addCapability(Abilities.ENTER_FLOOR);
+
 		//creating Estus flask that is stored in Player's inventory
 		this.addItemToInventory(new EstusFlask());
 		//creating TokenOfSouls that is stored in Player's inventory
@@ -38,9 +36,25 @@ public class Player extends Actor implements Soul {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+		if (!this.isConscious()) {
+			//todo reset here
+			System.out.println("Player is dead.");
+			System.exit(0);
+		}
+
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
+		// kill if on valley
+		Location playerLocation = map.locationOf(this);
+		Ground groundType = playerLocation.getGround();
+		if (groundType instanceof Valley){
+			this.hurt(1000); // do a lot of damage
+
+		}
+
+
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
