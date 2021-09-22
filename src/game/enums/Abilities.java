@@ -5,5 +5,6 @@ package game.enums;
  */
 public enum Abilities {
     REST,
-    ENTER_FLOOR // can stand on floor (or valley)
+    ENTER_FLOOR, // can stand on floor
+    FALL_FROM_VALLEY
 }
