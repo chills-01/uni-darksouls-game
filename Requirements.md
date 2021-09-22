@@ -6,7 +6,7 @@
 * [x] Skeleton
 * [x] Refactor this package
 * [x] Abstract enemy functionality
-* [ ] Make enemies hostile
+* [x] Make enemies hostile
 
 ## Ground (*Carter*)
 * [x] Make Cemetary class
@@ -39,5 +39,5 @@
 
 ## Reset (*Carter*)
 * [ ] Rest at bonfire feature
-* [ ] Walking off valley death
-* [ ] Death from zero HP
+* [x] Walking off valley death
+* [x] Death from zero HP
