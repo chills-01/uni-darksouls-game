@@ -36,11 +36,12 @@ public class Player extends Actor implements Soul {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		if (this.hitPoints <= 0) {
+		if (!this.isConscious()) {
 			//todo reset here
 			System.out.println("Player is dead.");
 			System.exit(0);
 		}
+
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -49,7 +50,7 @@ public class Player extends Actor implements Soul {
 		Location playerLocation = map.locationOf(this);
 		Ground groundType = playerLocation.getGround();
 		if (groundType instanceof Valley){
-			this.hurt(1000);
+			this.hurt(1000); // do a lot of damage
 
 		}
 
