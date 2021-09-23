@@ -9,11 +9,12 @@ import edu.monash.fit2099.engine.Menu;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Soul;
+import game.weapons.Broadsword;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Soul {
+public class Player extends Actor implements Soul{
 
 	private final Menu menu = new Menu();
 	protected int currentSouls;
@@ -31,9 +32,11 @@ public class Player extends Actor implements Soul {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
 		//creating Estus flask that is stored in Player's inventory
-		this.addItemToInventory(new EstusFlask());
+		this.addItemToInventory(new EstusFlask(this));
 		//creating TokenOfSouls that is stored in Player's inventory
 		this.addItemToInventory(new TokenOfSouls());
+		//creating Broadsword that is stored in Player's inventory
+		this.addItemToInventory(new Broadsword());
 	}
 
 	@Override
@@ -57,6 +60,17 @@ public class Player extends Actor implements Soul {
 		//TODO: transfer Player's souls to another Soul's instance.
 	}
 
+	public boolean setHitPoints(int newHitPoints) {
+		boolean flag = false;
+		if (newHitPoints <= this.getMaxHitPoints()) {
+			this.hitPoints = newHitPoints;
+			flag = true;
+		}
+		return flag;
+	}
 
+	public int getMaxHitPoints() {
+		return this.maxHitPoints;
+	}
 
 }

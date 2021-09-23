@@ -3,6 +3,7 @@ package game.enemies;
 import edu.monash.fit2099.engine.*;
 import game.WanderBehaviour;
 import game.interfaces.Behaviour;
+import game.weapons.Broadsword;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,8 @@ public class Skeleton extends Enemy{
         super("Skeleton", 'S', 100);
         this.initialLocation = new Integer[] {x, y};
         behaviours.add(new WanderBehaviour());
+        //creating Broadsword that is stored in Skeleton's inventory
+        this.addItemToInventory(new Broadsword());
 
     }
 
