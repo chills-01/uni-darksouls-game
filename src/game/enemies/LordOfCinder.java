@@ -5,8 +5,6 @@ import game.CinderLordItem;
 
 /**
  * The boss of Design o' Souls
- * FIXME: This boss is Boring. It does nothing. You need to implement features here.
- * TODO: Could it be an abstract class? If so, why and how?
  */
 public abstract class LordOfCinder extends Enemy {
     /**

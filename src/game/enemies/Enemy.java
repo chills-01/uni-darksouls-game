@@ -50,7 +50,6 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
 
     /**
      * Figure out what to do next.
-     * FIXME: An Undead wanders around at random and it cannot attack anyone. Also, figure out how to spawn this creature.
      * @see edu.monash.fit2099.engine.Actor#playTurn(Actions, Action, GameMap, Display)
      */
 

@@ -61,7 +61,7 @@ public class Application {
 			world.addPlayer(player, gameMap.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map
-			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 10));
+			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 5000));
 
 			//Place Skeletons on map
 			//todo add more skeletons
@@ -69,7 +69,6 @@ public class Application {
 			skeletonCoordinates.add(new Integer[] {10,10});
 			skeletonCoordinates.add(new Integer[] {20,20});
 
-			// todo: add more skeletons
 			for (Integer[] loc : skeletonCoordinates) {
 				Integer x = loc[0];
 				Integer y = loc[1];
