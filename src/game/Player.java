@@ -55,8 +55,9 @@ public class Player extends Actor implements Soul, Resettable {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		// display hp
+		// display hp and souls every turn
 		display.println("Health" + "(" + hitPoints + "/" + maxHitPoints + ")");
+		display.println("Souls:" + currentSouls);
 
 		if (!this.isConscious()) {
 			return new ResetAction(this, bonfireLocation, playerLocation);

@@ -1,6 +1,7 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.*;
+import game.AttackBehaviour;
 import game.actions.AttackAction;
 import game.FollowBehaviour;
 import game.WanderBehaviour;
@@ -39,6 +40,7 @@ public abstract class Enemy extends Actor implements Resettable {
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             // better way to do this but we want it as priority
             behaviours.add(0, new FollowBehaviour(otherActor));
+            behaviours.add(0, new AttackBehaviour(otherActor));
             actions.add(new AttackAction(this,direction));
         }
         return actions;

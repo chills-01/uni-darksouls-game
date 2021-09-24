@@ -13,12 +13,13 @@ public class EstusFlask extends ConsumableItem implements Resettable {
         this.charge = 3;
         this.allowableActions.add(new ConsumeItemAction(this));
         this.player = player;
+        registerInstance();
     }
 
     @Override
     public void resetInstance() {
         this.charge = maxCharge;
-        this.player.setHitPoints(this.player.getMaxHitPoints());
+//        this.player.setHitPoints(this.player.getMaxHitPoints());
     }
 
     @Override
