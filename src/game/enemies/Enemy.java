@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public abstract class Enemy extends Actor implements Resettable, Soul {
     // Will need to change this to a collection if Enemy gets additional Behaviours.
-    private ArrayList<Behaviour> behaviours = new ArrayList<>();
+    protected ArrayList<Behaviour> behaviours = new ArrayList<>(); // so yhormgiant can modify to not wander
     private int souls;
 
     public Enemy(String name, char displayChar, int hitPoints, int souls) {

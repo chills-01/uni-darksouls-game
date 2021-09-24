@@ -5,6 +5,7 @@ import game.enums.Abilities;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MeleeWeapon extends WeaponItem {
     /**
@@ -31,8 +32,12 @@ public class MeleeWeapon extends WeaponItem {
 
     @Override
     public int damage() {
+        
         if (passiveSkills.contains(Abilities.CRITICAL_HIT)) {
-            return 2 * damage;
+            new Display().println("CRITICAL HIT!!");
+            if (new Random().nextInt(5) < 1) { // 20% chance
+                return 2 * damage;
+            }
         }
         return super.damage();
     }
