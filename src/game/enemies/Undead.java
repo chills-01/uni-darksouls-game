@@ -27,4 +27,8 @@ public class Undead extends Enemy {
 		super(name, 'u', 50);
 	}
 
+	@Override
+	public boolean isExist() {
+		return false;
+	}
 }

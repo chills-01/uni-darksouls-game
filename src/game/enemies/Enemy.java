@@ -6,10 +6,11 @@ import game.FollowBehaviour;
 import game.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
+import game.interfaces.Resettable;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements Resettable {
     // Will need to change this to a collection if Enemy gets additional Behaviours.
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
@@ -17,6 +18,9 @@ public abstract class Enemy extends Actor {
         super(name, displayChar, hitPoints);
         behaviours.add(new WanderBehaviour());
         // todo make attack
+
+        //register as resettable
+        registerInstance();
     }
 
     /**
@@ -54,6 +58,17 @@ public abstract class Enemy extends Actor {
                 return action;
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public void resetInstance() {
+        // heal
+        hitPoints = maxHitPoints;
+    }
+
+    @Override
+    public boolean isExist() {
+        return true;
     }
 
 }

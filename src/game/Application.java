@@ -36,7 +36,7 @@ public class Application {
 					"................X............................................+++++++............",
 					"..................................###___###.........X.........+++...............",
 					"..................................#_______#......................+++............",
-					"...........++.....................#_______#.......................+.............",
+					"...........++.....................#___B___#.......................+.............",
 					".........+++......................#_______#........................++...........",
 					"............+++...................####_####..........................+..........",
 					"..............+......................................................++.........",
@@ -54,17 +54,19 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
-			Actor player = new Player("Unkindled (Player)", '@', 100);
-			world.addPlayer(player, gameMap.at(38, 12));
+			Location bonfireLocation = gameMap.at(38, 11); // to pass into player constructor
+
+			Actor player = new Player("Unkindled (Player)", '@', 100, bonfireLocation);
+			world.addPlayer(player, gameMap.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
 
 			//Place Skeletons on map
+			//todo add more skeletons
 			ArrayList<Integer[]> skeletonCoordinates = new ArrayList<>();
 			skeletonCoordinates.add(new Integer[] {10,10});
 			skeletonCoordinates.add(new Integer[] {20,20});
-
 
 			// todo: add more skeletons
 			for (Integer[] loc : skeletonCoordinates) {

@@ -1,5 +1,7 @@
 package game;
 
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.GameMap;
 import game.interfaces.Resettable;
 
 import java.util.ArrayList;
@@ -26,10 +28,11 @@ public class ResetManager {
 
     /**
      * Get the singleton instance of reset manager
+     *
      * @return ResetManager singleton instance
      */
-    public static ResetManager getInstance(){
-        if(instance == null){
+    public static ResetManager getInstance() {
+        if (instance == null) {
             instance = new ResetManager();
         }
         return instance;
@@ -38,32 +41,39 @@ public class ResetManager {
     /**
      * Constructor
      */
-    private ResetManager(){
+    private ResetManager() {
         resettableList = new ArrayList<>();
     }
 
     /**
      * Reset the game by traversing through all the list
      * By doing this way, it will avoid using `instanceof` all over the place.
-     * FIXME: it does nothing, you need to implement it :)
      */
-    public void run(){
+    public void run(GameMap map) {
+        for (Resettable r : resettableList) {
+            r.resetInstance();
+            if (! r.isExist() && r instanceof Actor) {
+                map.removeActor((Actor) r);
+            }
+        }
+
+
+
     }
 
     /**
      * Add the Resettable instance to the list
-     * FIXME: it does nothing, you need to implement it :)
      * @param resettable the interface instance
      */
-    public void appendResetInstance(Resettable resettable){
+    public void appendResetInstance(Resettable resettable) {
+        resettableList.add(resettable);
 
     }
 
     /**
      * clean up instances (actor, item, or ground) that doesn't exist anymore in the map
-     * FIXME: it does nothing, you need to implement it :)
      */
-    private void cleanUp(){
+    private void cleanUp() {
 
     }
 }

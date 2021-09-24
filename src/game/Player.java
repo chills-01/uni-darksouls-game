@@ -4,16 +4,19 @@ import edu.monash.fit2099.engine.*;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.ground.Valley;
+import game.interfaces.Resettable;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Soul{
+public class Player extends Actor implements Soul, Resettable {
 
 	private final Menu menu = new Menu();
 	protected int currentSouls;
+	private Location playerLocation;
+	private Location bonfireLocation;
 
 	/**
 	 * Constructor.
@@ -22,12 +25,21 @@ public class Player extends Actor implements Soul{
 	 * @param displayChar Character to represent the player in the UI
 	 * @param hitPoints   Player's starting number of hitpoints
 	 */
-	public Player(String name, char displayChar, int hitPoints) {
+	public Player(String name, char displayChar, int hitPoints, Location bonfireLocation) {
 		super(name, displayChar, hitPoints);
 		this.currentSouls = 0;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
 		this.addCapability(Abilities.ENTER_FLOOR);
+		this.addCapability(Abilities.FALL_FROM_VALLEY);
+
+		// registers as resettable
+		registerInstance();
+
+
+		// set initial bonfire location
+		this.bonfireLocation = bonfireLocation;
+
 
 		//creating Estus flask that is stored in Player's inventory
 		this.addItemToInventory(new EstusFlask(this));
@@ -37,27 +49,24 @@ public class Player extends Actor implements Soul{
 		this.addItemToInventory(new Broadsword());
 	}
 
+	public Location getBonfireLocation() {
+		return bonfireLocation;
+	}
+
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+		// display hp
+		display.println("Health" + "(" + hitPoints + "/" + maxHitPoints + ")");
+
 		if (!this.isConscious()) {
 			//todo reset here
-			System.out.println("Player is dead.");
-			System.exit(0);
+			// resetManager
+			return new ResetAction(this, bonfireLocation, playerLocation);
 		}
 
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
-		// kill if on valley
-		Location playerLocation = map.locationOf(this);
-		Ground groundType = playerLocation.getGround();
-		if (groundType instanceof Valley){
-			this.hurt(1000); // do a lot of damage
-
-		}
-
-
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
@@ -87,4 +96,11 @@ public class Player extends Actor implements Soul{
 		return this.maxHitPoints;
 	}
 
+	/**
+	 * a default interface method that register current instance to the Singleton manager.
+	 * TODO: Use this method at the constructor of `this` instance.
+	 */
+	public void registerInstance(){
+		ResetManager.getInstance().appendResetInstance(this);
+	}
 }
