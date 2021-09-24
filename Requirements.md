@@ -32,10 +32,10 @@
 ## Weapons (*Devshi*)
 * [x] Add all weapons + add to enemies / player
 * [x] Implement attack functionality
-* [x] Refactor actions
+* [ ] Refactor actions
 
 ## Actions (*Carter*)
-* [ ] Add attack behaviour (same as wander)
+* [x] Add attack behaviour (same as wander)
 
 ## Reset (*Carter*)
 * [ ] Rest at bonfire feature
