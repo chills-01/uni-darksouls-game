@@ -18,7 +18,7 @@
 * [x] Make Estus flask item
 * [x] Add to Player constructor
 * [x] Implements Consumable (create interface)
-* [ ] `ConsumeItemAction` implement
+* [x] `ConsumeItemAction` implement
 
 `Items.addItemToInventory(new EstusFlask())` in constructor
 
@@ -31,8 +31,8 @@
 
 ## Weapons (*Devshi*)
 * [x] Add all weapons + add to enemies / player
-* [ ] Implement attack functionality
-* [ ] Refactor actions
+* [x] Implement attack functionality
+* [x] Refactor actions
 
 ## Actions (*Carter*)
 * [ ] Add attack behaviour (same as wander)
