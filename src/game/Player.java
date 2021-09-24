@@ -96,11 +96,21 @@ public class Player extends Actor implements Soul, Resettable {
 		return this.maxHitPoints;
 	}
 
-	/**
-	 * a default interface method that register current instance to the Singleton manager.
-	 * TODO: Use this method at the constructor of `this` instance.
+		/**
+	 * Allows any classes that use this interface to reset abilities, attributes, and items.
+	 * TODO: Use this method in a reset manager to run the soft-reset.
 	 */
-	public void registerInstance(){
-		ResetManager.getInstance().appendResetInstance(this);
+	public void resetInstance() {
+		hitPoints = maxHitPoints;
+
 	}
+
+	/**
+	 * A useful method to clean up the list of instances in the ResetManager class
+	 * @return the existence of the instance in the game.
+	 * for example, true to keep it permanent, or false if instance needs to be removed from the reset list.
+	 */
+	public boolean isExist() {
+		return true;
+
 }
