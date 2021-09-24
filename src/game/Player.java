@@ -6,6 +6,7 @@ import game.enums.Status;
 import game.ground.Valley;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
+import game.weapons.Broadsword;
 
 /**
  * Class representing the Player.
@@ -41,9 +42,11 @@ public class Player extends Actor implements Soul, Resettable {
 
 
 		//creating Estus flask that is stored in Player's inventory
-		this.addItemToInventory(new EstusFlask());
+		this.addItemToInventory(new EstusFlask(this));
 		//creating TokenOfSouls that is stored in Player's inventory
 		this.addItemToInventory(new TokenOfSouls());
+		//creating Broadsword that is stored in Player's inventory
+		this.addItemToInventory(new Broadsword());
 	}
 
 	public Location getBonfireLocation() {
@@ -80,23 +83,17 @@ public class Player extends Actor implements Soul, Resettable {
 		//TODO: transfer Player's souls to another Soul's instance.
 	}
 
-	/**
-	 * Allows any classes that use this interface to reset abilities, attributes, and items.
-	 * TODO: Use this method in a reset manager to run the soft-reset.
-	 */
-	public void resetInstance() {
-		hitPoints = maxHitPoints;
-
+	public boolean setHitPoints(int newHitPoints) {
+		boolean flag = false;
+		if (newHitPoints <= this.getMaxHitPoints()) {
+			this.hitPoints = newHitPoints;
+			flag = true;
+		}
+		return flag;
 	}
 
-	/**
-	 * A useful method to clean up the list of instances in the ResetManager class
-	 * @return the existence of the instance in the game.
-	 * for example, true to keep it permanent, or false if instance needs to be removed from the reset list.
-	 */
-	public boolean isExist() {
-		return true;
-
+	public int getMaxHitPoints() {
+		return this.maxHitPoints;
 	}
 
 	/**
