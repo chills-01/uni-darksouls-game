@@ -8,17 +8,19 @@ import game.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.interfaces.Resettable;
+import game.interfaces.Soul;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, Soul {
     // Will need to change this to a collection if Enemy gets additional Behaviours.
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
+    private int souls;
 
-    public Enemy(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints, int souls) {
         super(name, displayChar, hitPoints);
-        behaviours.add(new WanderBehaviour());
-        // todo make attack
+        this.souls = souls;
+        behaviours.add(new WanderBehaviour()); // does by default
 
         //register as resettable
         registerInstance();
@@ -73,4 +75,14 @@ public abstract class Enemy extends Actor implements Resettable {
         return true;
     }
 
+    @Override
+    public void transferSouls(Soul soulObject) {
+        soulObject.addSouls(souls);
+        this.subtractSouls(souls);
+    }
+
+    @Override
+    public boolean subtractSouls(int souls) {
+        return Soul.super.subtractSouls(souls);
+    }
 }

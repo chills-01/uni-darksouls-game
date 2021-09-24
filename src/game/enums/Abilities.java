@@ -6,5 +6,6 @@ package game.enums;
 public enum Abilities {
     REST,
     ENTER_FLOOR, // can stand on floor
-    FALL_FROM_VALLEY
+    FALL_FROM_VALLEY,
+    CRITICAL_HIT //weapons
 }

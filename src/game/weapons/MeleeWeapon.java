@@ -1,9 +1,10 @@
 package game.weapons;
 
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.DropItemAction;
-import edu.monash.fit2099.engine.WeaponItem;
+import edu.monash.fit2099.engine.*;
+import game.enums.Abilities;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MeleeWeapon extends WeaponItem {
     /**
@@ -15,13 +16,24 @@ public class MeleeWeapon extends WeaponItem {
      * @param verb        verb to use for this weapon, e.g. "hits", "zaps"
      * @param hitRate     the probability/chance to hit the target.
      */
+
+    protected ArrayList<Abilities> passiveSkills;
     public MeleeWeapon(String name, char displayChar, int damage, String verb, int hitRate) {
         super(name, displayChar, damage, verb, hitRate);
+        passiveSkills = new ArrayList<>();
     }
 
 
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
+    }
+
+    @Override
+    public int damage() {
+        if (passiveSkills.contains(Abilities.CRITICAL_HIT)) {
+            return 2 * damage;
+        }
+        return super.damage();
     }
 }

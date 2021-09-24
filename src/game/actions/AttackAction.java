@@ -51,6 +51,7 @@ public class AttackAction extends Action {
 		}
 
 		int damage = weapon.damage();
+
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
@@ -65,6 +66,11 @@ public class AttackAction extends Action {
 			if (!(target instanceof Player)) {
 				map.removeActor(target);
 			}
+			// transfer soul to player if actor is player?
+			if (actor instanceof Player) {
+				target.asSoul().transferSouls(actor.asSoul());
+			}
+
 			result += System.lineSeparator() + target + " is killed.";
 		}
 

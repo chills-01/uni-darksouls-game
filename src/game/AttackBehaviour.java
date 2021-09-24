@@ -2,9 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
-import game.enums.Abilities;
 import game.enums.Status;
-import game.interfaces.Behaviour;
 
 public class AttackBehaviour extends FollowBehaviour {
     public AttackBehaviour(Actor subject) {

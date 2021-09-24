@@ -13,7 +13,7 @@ public abstract class LordOfCinder extends Enemy {
      * Constructor.
      */
     public LordOfCinder(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints );
+        super(name, displayChar, hitPoints, 5000 );
         this.addItemToInventory(new CinderLordItem());
     }
 
@@ -24,8 +24,8 @@ public abstract class LordOfCinder extends Enemy {
      * @param display    the I/O object to which messages may be written
      * @return DoNothingAction
      */
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        return new DoNothingAction();
-    }
+//    @Override
+//    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+//        return new DoNothingAction();
+//    }
 }

@@ -52,6 +52,9 @@ public class ResetManager {
     public void run(GameMap map) {
         for (Resettable r : resettableList) {
             r.resetInstance();
+
+            // remove actors if not permanent
+            // todo dont downcast
             if (! r.isExist() && r instanceof Actor) {
                 map.removeActor((Actor) r);
             }

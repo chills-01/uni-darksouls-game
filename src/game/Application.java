@@ -10,6 +10,7 @@ import game.enemies.Skeleton;
 import game.enemies.Undead;
 import game.enemies.YhormTheGiant;
 import game.ground.*;
+import game.weapons.StormRuler;
 
 /**
  * The main class for the Jurassic World game.
@@ -60,7 +61,7 @@ public class Application {
 			world.addPlayer(player, gameMap.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map
-			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
+			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 10));
 
 			//Place Skeletons on map
 			//todo add more skeletons
@@ -73,8 +74,10 @@ public class Application {
 				Integer x = loc[0];
 				Integer y = loc[1];
 				gameMap.at(x, y).addActor(new Skeleton(x, y));
-
 		}
+
+			// place storm ruler
+			gameMap.at(7, 25).addItem(new StormRuler());
 
 			world.run();
 
