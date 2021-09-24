@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * A global Singleton manager that does soft-reset on the instances.
- * TODO: you may modify (add or remove) methods in this class if you think they are not necessary.
  * HINT: refer to Bootcamp Week 5 about static factory method.
  * A3: Think about how will you improve this implementation in the future assessment.
  * What could be the drawbacks of this implementation?
@@ -52,6 +51,9 @@ public class ResetManager {
     public void run(GameMap map) {
         for (Resettable r : resettableList) {
             r.resetInstance();
+
+            // remove actors if not permanent
+            // todo dont downcast
             if (! r.isExist() && r instanceof Actor) {
                 map.removeActor((Actor) r);
             }

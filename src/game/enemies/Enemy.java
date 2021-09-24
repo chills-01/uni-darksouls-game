@@ -1,23 +1,26 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.*;
+import game.AttackBehaviour;
 import game.actions.AttackAction;
 import game.FollowBehaviour;
 import game.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.interfaces.Resettable;
+import game.interfaces.Soul;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, Soul {
     // Will need to change this to a collection if Enemy gets additional Behaviours.
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
+    private int souls;
 
-    public Enemy(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints, int souls) {
         super(name, displayChar, hitPoints);
-        behaviours.add(new WanderBehaviour());
-        // todo make attack
+        this.souls = souls;
+        behaviours.add(new WanderBehaviour()); // does by default
 
         //register as resettable
         registerInstance();
@@ -39,6 +42,7 @@ public abstract class Enemy extends Actor implements Resettable {
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             // better way to do this but we want it as priority
             behaviours.add(0, new FollowBehaviour(otherActor));
+            behaviours.add(0, new AttackBehaviour(otherActor));
             actions.add(new AttackAction(this,direction));
         }
         return actions;
@@ -46,7 +50,6 @@ public abstract class Enemy extends Actor implements Resettable {
 
     /**
      * Figure out what to do next.
-     * FIXME: An Undead wanders around at random and it cannot attack anyone. Also, figure out how to spawn this creature.
      * @see edu.monash.fit2099.engine.Actor#playTurn(Actions, Action, GameMap, Display)
      */
 
@@ -71,4 +74,14 @@ public abstract class Enemy extends Actor implements Resettable {
         return true;
     }
 
+    @Override
+    public void transferSouls(Soul soulObject) {
+        soulObject.addSouls(souls);
+        this.subtractSouls(souls);
+    }
+
+    @Override
+    public boolean subtractSouls(int souls) {
+        return Soul.super.subtractSouls(souls);
+    }
 }

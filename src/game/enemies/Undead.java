@@ -1,16 +1,12 @@
 package game.enemies;
 
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.DoNothingAction;
-import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
+import game.interfaces.Soul;
 
 import java.util.ArrayList;
 
@@ -24,11 +20,16 @@ public class Undead extends Enemy {
 	 * @param name the name of this Undead
 	 */
 	public Undead(String name) {
-		super(name, 'u', 50);
+		super(name, 'u', 50, 50);
 	}
 
 	@Override
-	public boolean isExist() {
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(20, "thwacks");
+	}
+
+	@Override
+	public boolean isExist(){
 		return false;
 	}
 }

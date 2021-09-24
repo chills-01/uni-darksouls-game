@@ -17,6 +17,7 @@ public class Player extends Actor implements Soul, Resettable {
 	protected int currentSouls;
 	private Location playerLocation;
 	private Location bonfireLocation;
+	private Location previousLocation;
 
 	/**
 	 * Constructor.
@@ -43,8 +44,12 @@ public class Player extends Actor implements Soul, Resettable {
 
 		//creating Estus flask that is stored in Player's inventory
 		this.addItemToInventory(new EstusFlask(this));
+
+		// create this when death occurs
 		//creating TokenOfSouls that is stored in Player's inventory
-		this.addItemToInventory(new TokenOfSouls());
+//		this.addItemToInventory(new TokenOfSouls());
+
+
 		//creating Broadsword that is stored in Player's inventory
 		this.addItemToInventory(new Broadsword());
 	}
@@ -52,19 +57,29 @@ public class Player extends Actor implements Soul, Resettable {
 	public Location getBonfireLocation() {
 		return bonfireLocation;
 	}
+	public Location getPreviousLocation() {
+		return previousLocation;
+	}
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		// display hp
+		// display hp and souls every turn
 		display.println("Health" + "(" + hitPoints + "/" + maxHitPoints + ")");
+		display.println("Souls: " + currentSouls);
+
+		playerLocation = map.locationOf(this);
+
 
 		if (!this.isConscious()) {
-			return new ResetAction(this, bonfireLocation, playerLocation);
+			return new ResetAction(this, bonfireLocation, playerLocation, previousLocation);
 		}
 
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
+		// store previous location
+		previousLocation = playerLocation;
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
@@ -79,6 +94,8 @@ public class Player extends Actor implements Soul, Resettable {
 	@Override
 	public void transferSouls(Soul soulObject) {
 		//TODO: transfer Player's souls to another Soul's instance.
+		soulObject.addSouls(currentSouls);
+		currentSouls = 0;
 	}
 
 	public boolean setHitPoints(int newHitPoints) {
@@ -113,4 +130,6 @@ public class Player extends Actor implements Soul, Resettable {
 		return true;
 
 	}
+
+
 }

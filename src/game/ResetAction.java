@@ -1,30 +1,42 @@
 package game;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.engine.*;
+import game.enums.Abilities;
+import game.ground.Valley;
 
 public class ResetAction extends Action {
     private Actor actor;
     private Location bonfireLocation;
     private Location playerLocation;
+    private Location previousLocation;
 
-    public ResetAction(Actor player, Location bonfireLocation, Location playerLocation) {
+    public ResetAction(Actor player, Location bonfireLocation, Location playerLocation, Location previousLocation) {
         this.actor = player;
         this.bonfireLocation = bonfireLocation;
         this.playerLocation = playerLocation;
+        this.previousLocation = previousLocation;
     }
 
 
-    @Override
     public String execute(Actor actor, GameMap map) {
-
-
-
 
         // here we should discern if this is a bonfire reset or a death
         if (! actor.isConscious()) { // if dead
+            // drop token of souls
+            TokenOfSouls tokenOfSouls = new TokenOfSouls();
+            actor.asSoul().transferSouls(tokenOfSouls);
+
+            // determine to drop at current or previous location
+            Location dropLocation;
+            if (map.locationOf(actor).getGround() instanceof Valley) {
+                dropLocation = previousLocation;
+            } else {
+                dropLocation = map.locationOf(actor);
+            }
+
+            map.at(dropLocation.x(), dropLocation.y()).addItem(tokenOfSouls);
+
+
             map.moveActor(actor, bonfireLocation);
             ResetManager.getInstance().run(map);
 

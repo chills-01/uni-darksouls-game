@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Location;
+import game.Player;
 import game.ResetAction;
 import game.enums.Abilities;
 
@@ -12,14 +13,16 @@ public class Bonfire extends Ground {
         super('B');
     }
 
-    @Override
+    // todo requires a player to interact
     public Actions allowableActions(Actor actor, Location location, String direction) {
-        if (location.getActor() == actor && actor.hasCapability(Abilities.REST)) {
+        if (location.getActor() == actor && actor.hasCapability(Abilities.REST) && actor instanceof Player) {
             // actor is already at bonfire
             Actions actions = new Actions();
-            actions.add(new ResetAction(actor, location, location));
+            actions.add(new ResetAction(actor, location, location, location));
             return actions;
+        } else {
+            return new Actions();
         }
-        return new Actions();
     }
 }
+

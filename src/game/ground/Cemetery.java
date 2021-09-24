@@ -26,10 +26,5 @@ public class Cemetery extends Ground {
         }
 
     }
-    @Override
-    // todo player can step on cemetery
-    public boolean canActorEnter(Actor actor) {
-        return true;
-    }
 
 }

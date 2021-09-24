@@ -8,6 +8,8 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
+import game.Player;
+import game.enemies.Enemy;
 
 /**
  * Special Action for attacking other Actors.
@@ -49,6 +51,7 @@ public class AttackAction extends Action {
 		}
 
 		int damage = weapon.damage();
+
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {
@@ -58,9 +61,16 @@ public class AttackAction extends Action {
 				dropActions.add(item.getDropAction(actor));
 			for (Action drop : dropActions)
 				drop.execute(target, map);
-			// remove actor
-			//TODO: In A1 scenario, you must not remove a Player from the game yet. What to do, then?
-			map.removeActor(target);
+
+			// remove actor if not the player
+			if (!(target instanceof Player)) {
+				map.removeActor(target);
+			}
+			// transfer soul to player if actor is player?
+			if (actor instanceof Player) {
+				target.asSoul().transferSouls(actor.asSoul());
+			}
+
 			result += System.lineSeparator() + target + " is killed.";
 		}
 
