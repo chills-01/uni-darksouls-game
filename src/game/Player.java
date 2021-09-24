@@ -59,8 +59,6 @@ public class Player extends Actor implements Soul, Resettable {
 		display.println("Health" + "(" + hitPoints + "/" + maxHitPoints + ")");
 
 		if (!this.isConscious()) {
-			//todo reset here
-			// resetManager
 			return new ResetAction(this, bonfireLocation, playerLocation);
 		}
 
@@ -96,7 +94,7 @@ public class Player extends Actor implements Soul, Resettable {
 		return this.maxHitPoints;
 	}
 
-		/**
+	/**
 	 * Allows any classes that use this interface to reset abilities, attributes, and items.
 	 * TODO: Use this method in a reset manager to run the soft-reset.
 	 */
@@ -107,10 +105,12 @@ public class Player extends Actor implements Soul, Resettable {
 
 	/**
 	 * A useful method to clean up the list of instances in the ResetManager class
+	 *
 	 * @return the existence of the instance in the game.
 	 * for example, true to keep it permanent, or false if instance needs to be removed from the reset list.
 	 */
 	public boolean isExist() {
 		return true;
 
+	}
 }

@@ -20,12 +20,13 @@ public class ResetAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
 
-        ResetManager.getInstance().run(map);
+
 
 
         // here we should discern if this is a bonfire reset or a death
         if (! actor.isConscious()) { // if dead
             map.moveActor(actor, bonfireLocation);
+            ResetManager.getInstance().run(map);
 
 
             return "\n" +
@@ -46,6 +47,7 @@ public class ResetAction extends Action {
                     "                                                                          \n" +
                     "                                                                          \n";
         } else {
+            ResetManager.getInstance().run(map);
             return "Player reset the game";
         }
     }

@@ -1,7 +1,7 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.*;
-import game.AttackAction;
+import game.actions.AttackAction;
 import game.FollowBehaviour;
 import game.WanderBehaviour;
 import game.enums.Status;
