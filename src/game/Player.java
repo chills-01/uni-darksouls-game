@@ -32,19 +32,22 @@ public class Player extends Actor implements Soul, Resettable {
 		this.addCapability(Abilities.ENTER_FLOOR);
 		this.addCapability(Abilities.FALL_FROM_VALLEY);
 
-		ResetManager.getInstance().appendResetInstance(this);
+		// registers as resettable
+		registerInstance();
+
 
 		// set initial bonfire location
 		this.bonfireLocation = bonfireLocation;
-
-
-
 
 
 		//creating Estus flask that is stored in Player's inventory
 		this.addItemToInventory(new EstusFlask());
 		//creating TokenOfSouls that is stored in Player's inventory
 		this.addItemToInventory(new TokenOfSouls());
+	}
+
+	public Location getBonfireLocation() {
+		return bonfireLocation;
 	}
 
 	@Override
@@ -54,8 +57,6 @@ public class Player extends Actor implements Soul, Resettable {
 
 		if (!this.isConscious()) {
 			//todo reset here
-//			display.println("Player is dead.");
-//			System.exit(0);
 			// resetManager
 			return new ResetAction(this, bonfireLocation, playerLocation);
 		}
@@ -63,14 +64,6 @@ public class Player extends Actor implements Soul, Resettable {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
-
-		// kill if on valley
-//		playerLocation = map.locationOf(this);
-//		Ground ground = playerLocation.getGround();
-//		if (ground instanceof Valley) {
-//			ground.allowableActions(this, playerLocation, "");
-//		}
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
@@ -92,7 +85,7 @@ public class Player extends Actor implements Soul, Resettable {
 	 * TODO: Use this method in a reset manager to run the soft-reset.
 	 */
 	public void resetInstance() {
-		heal(Integer.MAX_VALUE); // heal to max health
+		hitPoints = maxHitPoints;
 
 	}
 
