@@ -2,6 +2,7 @@ package game.enemies;
 
 
 import edu.monash.fit2099.engine.*;
+import game.NoWeapon;
 import game.actions.AttackAction;
 import game.WanderBehaviour;
 import game.enums.Status;
@@ -25,7 +26,7 @@ public class Undead extends Enemy {
 
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
-		return new IntrinsicWeapon(20, "thwacks");
+		return new NoWeapon(20, "thwacks");
 	}
 
 	@Override

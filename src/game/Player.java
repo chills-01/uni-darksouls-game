@@ -63,8 +63,7 @@ public class Player extends Actor implements Soul, Resettable {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		// display hp and souls every turn
-		display.println("Health" + "(" + hitPoints + "/" + maxHitPoints + ")");
-		display.println("Souls: " + currentSouls);
+		display.println("Health" + "(" + hitPoints + "/" + maxHitPoints + "), " + "Souls: " + currentSouls + ", Holding: " + this.getWeapon().toString());
 
 		playerLocation = map.locationOf(this);
 

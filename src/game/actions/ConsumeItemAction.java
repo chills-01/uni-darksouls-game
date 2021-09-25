@@ -14,6 +14,7 @@ public class ConsumeItemAction extends Action {
 
     public String execute(Actor actor, GameMap Map) { //unsure about needing if statement {
 
+            // todo is there a way to not hardcode this?
             int healPoints = (int) (0.4 * 200);
             actor.heal(healPoints);
             item.reduceCharge();

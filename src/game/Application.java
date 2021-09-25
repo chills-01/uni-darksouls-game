@@ -23,7 +23,7 @@ public class Application {
 			World world = new World(new Display());
 
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery(), new Bonfire()); // changed this, put in string?
+					new Cemetery()); // changed this, put in string?
 
 			List<String> map = Arrays.asList(
 					"..++++++..+++...........................++++......+++.................+++.......",
@@ -37,7 +37,7 @@ public class Application {
 					"................X............................................+++++++............",
 					"..................................###___###.........X.........+++...............",
 					"..................................#_______#......................+++............",
-					"...........++.....................#___B___#.......................+.............",
+					"...........++.....................#_______#.......................+.............",
 					".........+++......................#_______#........................++...........",
 					"............+++...................####_####..........................+..........",
 					"..............+......................................................++.........",
@@ -56,6 +56,7 @@ public class Application {
 			world.addGameMap(gameMap);
 
 			Location bonfireLocation = gameMap.at(38, 11); // to pass into player constructor
+			gameMap.at(bonfireLocation.x(), bonfireLocation.y()).setGround(new Bonfire());
 
 			Actor player = new Player("Unkindled (Player)", '@', 100, bonfireLocation);
 			world.addPlayer(player, gameMap.at(38, 11));

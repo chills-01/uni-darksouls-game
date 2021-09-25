@@ -13,7 +13,6 @@ public class Bonfire extends Ground {
         super('B');
     }
 
-    // todo requires a player to interact
     public Actions allowableActions(Actor actor, Location location, String direction) {
         if (location.getActor() == actor && actor.hasCapability(Abilities.REST) && actor instanceof Player) {
             // actor is already at bonfire
