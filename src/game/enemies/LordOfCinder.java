@@ -22,8 +22,4 @@ public abstract class LordOfCinder extends Enemy {
      * @param display    the I/O object to which messages may be written
      * @return DoNothingAction
      */
-//    @Override
-//    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-//        return new DoNothingAction();
-//    }
 }

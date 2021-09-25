@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
 import game.Player;
 import game.enemies.Enemy;
+import game.enemies.LordOfCinder;
 
 /**
  * Special Action for attacking other Actors.
@@ -72,6 +73,27 @@ public class AttackAction extends Action {
 			}
 
 			result += System.lineSeparator() + target + " is killed.";
+
+			// special message for lord of cinder
+			if (target instanceof LordOfCinder) {
+				result = "\n" +
+						"                                                                                                                                                                                                 \n" +
+						"                                                                                                                                                                                                 \n" +
+						"____       ____   ________   ________            ____   ________          ____   ______      ___________  __________ ________          ________   _     ____     ____     __________ ___      ___\n" +
+						"`MM'      6MMMMb  `MMMMMMMb. `MMMMMMMb.         6MMMMb  `MMMMMMM         6MMMMb/ `MM`MM\\     `M'`MMMMMMMb.`MMMMMMMMM `MMMMMMMb.        `MMMMMMM  dM.    `MM'     `MM'     `MMMMMMMMM `MM\\     `M'\n" +
+						" MM      8P    Y8  MM    `Mb  MM    `Mb        8P    Y8  MM    \\        8P    YM  MM MMM\\     M  MM    `Mb MM      \\  MM    `Mb         MM    \\ ,MMb     MM       MM       MM      \\  MMM\\     M \n" +
+						" MM     6M      Mb MM     MM  MM     MM       6M      Mb MM            6M      Y  MM M\\MM\\    M  MM     MM MM         MM     MM         MM      d'YM.    MM       MM       MM         M\\MM\\    M \n" +
+						" MM     MM      MM MM     MM  MM     MM       MM      MM MM   ,        MM         MM M \\MM\\   M  MM     MM MM    ,    MM     MM         MM   , ,P `Mb    MM       MM       MM    ,    M \\MM\\   M \n" +
+						" MM     MM      MM MM    .M9  MM     MM       MM      MM MMMMMM        MM         MM M  \\MM\\  M  MM     MM MMMMMMM    MM    .M9         MMMMMM d'  YM.   MM       MM       MMMMMMM    M  \\MM\\  M \n" +
+						" MM     MM      MM MMMMMMM9'  MM     MM       MM      MM MM   `        MM         MM M   \\MM\\ M  MM     MM MM    `    MMMMMMM9'         MM   `,P   `Mb   MM       MM       MM    `    M   \\MM\\ M \n" +
+						" MM     MM      MM MM  \\M\\    MM     MM       MM      MM MM            MM         MM M    \\MM\\M  MM     MM MM         MM  \\M\\           MM    d'    YM.  MM       MM       MM         M    \\MM\\M \n" +
+						" MM     YM      M9 MM   \\M\\   MM     MM       YM      M9 MM            YM      6  MM M     \\MMM  MM     MM MM         MM   \\M\\          MM   ,MMMMMMMMb  MM       MM       MM         M     \\MMM \n" +
+						" MM    / 8b    d8  MM    \\M\\  MM    .M9        8b    d8  MM             8b    d9  MM M      \\MM  MM    .M9 MM      /  MM    \\M\\         MM   d'      YM. MM    /  MM    /  MM      /  M      \\MM \n" +
+						"_MMMMMMM  YMMMM9  _MM_    \\M\\_MMMMMMM9'         YMMMM9  _MM_             YMMMM9  _MM_M_      \\M _MMMMMMM9'_MMMMMMMMM _MM_    \\M\\_      _MM__dM_     _dMM_MMMMMMM _MMMMMMM _MMMMMMMMM _M_      \\M \n" +
+						"                                                                                                                                                                                                 \n" +
+						"                                                                                                                                                                                                 \n" +
+						"                                                                                                                                                                                                 \n";
+			}
 		}
 
 		return result;

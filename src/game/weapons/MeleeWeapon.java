@@ -32,10 +32,9 @@ public class MeleeWeapon extends WeaponItem {
 
     @Override
     public int damage() {
-        
         if (passiveSkills.contains(Abilities.CRITICAL_HIT)) {
-            new Display().println("CRITICAL HIT!!");
             if (new Random().nextInt(5) < 1) { // 20% chance
+                new Display().println("CRITICAL HIT!!");
                 return 2 * damage;
             }
         }
