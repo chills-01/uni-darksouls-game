@@ -1,9 +1,13 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.PickUpItemAction;
+
+/**
+ * Modifies pickup item so that when it is picked up it transfers souls to actor
+ */
 
 public class PickUpSoulsAction extends PickUpItemAction {
     /**

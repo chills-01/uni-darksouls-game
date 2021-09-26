@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Location;
 import game.Player;
-import game.ResetAction;
+import game.actions.ResetAction;
 import game.enums.Abilities;
 
 public class Bonfire extends Ground {

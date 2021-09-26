@@ -1,7 +1,6 @@
 package game.enemies;
 
-import edu.monash.fit2099.engine.*;
-import game.WanderBehaviour;
+import game.behaviours.WanderBehaviour;
 import game.interfaces.Behaviour;
 import game.weapons.Broadsword;
 

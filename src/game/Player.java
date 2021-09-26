@@ -1,10 +1,13 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.ResetAction;
 import game.enums.Abilities;
 import game.enums.Status;
+import game.interfaces.ConsumeAbility;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
+import game.items.EstusFlask;
 import game.weapons.Broadsword;
 
 /**

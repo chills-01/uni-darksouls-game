@@ -57,21 +57,21 @@ public class StormRuler extends MeleeWeapon {
         this.allowableActions.add(new ChargeAction(this));
     }
 
-    private Actor getTarget(Actor actor, GameMap map) {
-        Actor target = null;
-        //check for Yhorm the Giant
-        Location here = map.locationOf(actor);
-        for (Exit exit : here.getExits()) {
-            if (exit.getDestination().containsAnActor()) {
-                Actor targetActor = exit.getDestination().getActor();
-                if (targetActor.hasCapability(Abilities.WEAK_TO_STORM_RULER) && (targetActor instanceof YhormTheGiant)) {
-                    target = targetActor;
-                }
-            }
-        }
-        return target;
-
-    }
+//    private Actor getTarget(Actor actor, GameMap map) {
+//        Actor target = null;
+//        //check for Yhorm the Giant
+//        Location here = map.locationOf(actor);
+//        for (Exit exit : here.getExits()) {
+//            if (exit.getDestination().containsAnActor()) {
+//                Actor targetActor = exit.getDestination().getActor();
+//                if (targetActor.hasCapability(Abilities.WEAK_TO_STORM_RULER) && (targetActor instanceof YhormTheGiant)) {
+//                    target = targetActor;
+//                }
+//            }
+//        }
+//        return target;
+//
+//    }
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
         if (actor instanceof Player) {

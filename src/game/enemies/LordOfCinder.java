@@ -1,7 +1,6 @@
 package game.enemies;
 
-import edu.monash.fit2099.engine.*;
-import game.CinderLordItem;
+import game.items.CinderLordItem;
 
 /**
  * The boss of Design o' Souls

@@ -2,14 +2,7 @@ package game.enemies;
 
 
 import edu.monash.fit2099.engine.*;
-import game.NoWeapon;
-import game.actions.AttackAction;
-import game.WanderBehaviour;
-import game.enums.Status;
-import game.interfaces.Behaviour;
-import game.interfaces.Soul;
-
-import java.util.ArrayList;
+import game.weapons.NoWeapon;
 
 /**
  * An undead minion.

@@ -1,10 +1,12 @@
-package game;
+package game.items;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.PickUpItemAction;
 import edu.monash.fit2099.engine.addons.DesignOSoulsAddOn;
+import game.actions.PickUpSoulsAction;
+import game.Player;
 import game.interfaces.Soul;
 
 public class TokenOfSouls extends Item implements Soul, DesignOSoulsAddOn {

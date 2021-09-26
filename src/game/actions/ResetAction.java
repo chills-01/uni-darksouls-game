@@ -1,8 +1,9 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.*;
-import game.enums.Abilities;
+import game.ResetManager;
 import game.ground.Valley;
+import game.items.TokenOfSouls;
 
 public class ResetAction extends Action {
     private Actor actor;

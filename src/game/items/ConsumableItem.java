@@ -1,8 +1,9 @@
-package game;
+package game.items;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.PickUpItemAction;
+import game.Player;
 import game.actions.ConsumeItemAction;
 
 public class ConsumableItem extends Item {

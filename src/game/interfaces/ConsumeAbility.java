@@ -1,4 +1,4 @@
-package game;
+package game.interfaces;
 
 /**
  * Interface that enforces actors consuming items to have certain methods

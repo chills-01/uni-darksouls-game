@@ -1,19 +1,16 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.*;
-import game.AttackBehaviour;
-import game.FollowBehaviour;
-import game.WanderBehaviour;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
 import game.actions.AttackAction;
 import game.actions.WindSlashAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
-import game.weapons.Broadsword;
 import game.weapons.YhormGreatMachete;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class YhormTheGiant extends LordOfCinder{
     public YhormTheGiant(String name, char displayChar, int hitPoints) {

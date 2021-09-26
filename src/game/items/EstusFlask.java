@@ -1,9 +1,6 @@
-package game;
+package game.items;
 
-import edu.monash.fit2099.engine.Actor;
 import game.actions.ConsumeItemAction;
-import game.enums.Abilities;
-import game.interfaces.Consumable;
 import game.interfaces.Resettable;
 
 public class EstusFlask extends ConsumableItem implements Resettable {
