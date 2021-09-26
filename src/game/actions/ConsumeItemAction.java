@@ -12,10 +12,10 @@ public class ConsumeItemAction extends Action {
         this.item = item;
     }
 
-    @Override
     public String execute(Actor actor, GameMap Map) { //unsure about needing if statement {
 
-            int healPoints = (int)(0.4 * 200);
+            // todo is there a way to not hardcode this?
+            int healPoints = (int) (0.4 * 200);
             actor.heal(healPoints);
             item.reduceCharge();
 

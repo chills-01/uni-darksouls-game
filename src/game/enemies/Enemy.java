@@ -54,6 +54,7 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
      */
 
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        // todo display hitpoints and weapon
         // loop through all behaviours
         for(game.interfaces.Behaviour Behaviour : behaviours) {
             Action action = Behaviour.getAction(this, map);
@@ -61,6 +62,11 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
                 return action;
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public String toString() {
+        return name  + " (" + hitPoints + "/" + maxHitPoints + "), holding: " + getWeapon().toString();
     }
 
     @Override

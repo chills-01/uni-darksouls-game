@@ -51,4 +51,15 @@ public class YhormTheGiant extends LordOfCinder{
         }
         return actions;
     }
+
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        if (this.hitPoints < 0.5 * maxHitPoints) {
+            new Display().println("EMBER FORM ACTIVATED");
+            ((WeaponItem) this.getWeapon()).addCapability(Status.EMBER_FORM); // todo fix downcast
+
+
+        }
+        return super.playTurn(actions, lastAction, map, display);
+    }
 }
