@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import game.ConsumableItem;
+import game.ConsumeAbility;
 
 public class ConsumeItemAction extends Action {
     protected ConsumableItem item;
@@ -13,13 +14,15 @@ public class ConsumeItemAction extends Action {
     }
 
     public String execute(Actor actor, GameMap Map) { //unsure about needing if statement {
-
-            // todo is there a way to not hardcode this?
-            int healPoints = (int) (0.4 * 200);
+        if (actor instanceof ConsumeAbility) {
+            // 40 % of max hitpoints
+            int healPoints = (int) (0.4 * ((ConsumeAbility) actor).getMaxHitPoints());
             actor.heal(healPoints);
             item.reduceCharge();
 
-        return menuDescription(actor);
+            return menuDescription(actor);
+        }
+        return "Actor cannot consume items";
     }
 
 
@@ -27,8 +30,6 @@ public class ConsumeItemAction extends Action {
     public String menuDescription(Actor actor) {
         return actor + " drinks from the " + item + " (" + item.getCharge() + "/" + item.getMaxCharge() + ")";
     }
-
-
 
 
 }

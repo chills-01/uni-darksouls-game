@@ -10,10 +10,9 @@ public class ConsumableItem extends Item {
     protected int maxCharge;
     protected Player player;
 
-    public ConsumableItem(String name, char displayChar, boolean portable, int maxCharge, Actor actor) {
+    public ConsumableItem(String name, char displayChar, boolean portable, int maxCharge) {
         super(name, displayChar, portable);
         this.maxCharge = maxCharge;
-        this.player = player;
     }
 
 

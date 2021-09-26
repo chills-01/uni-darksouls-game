@@ -10,7 +10,7 @@ import game.weapons.Broadsword;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Soul, Resettable {
+public class Player extends Actor implements Soul, Resettable, ConsumeAbility {
 
 	private final Menu menu = new Menu();
 	protected int currentSouls;
@@ -42,7 +42,7 @@ public class Player extends Actor implements Soul, Resettable {
 
 
 		//creating Estus flask that is stored in Player's inventory
-		this.addItemToInventory(new EstusFlask(this));
+		this.addItemToInventory(new EstusFlask());
 
 		// create this when death occurs
 		//creating TokenOfSouls that is stored in Player's inventory
@@ -109,11 +109,6 @@ public class Player extends Actor implements Soul, Resettable {
 		}
 		return flag;
 	}
-
-	public int getMaxHitPoints() {
-		return this.maxHitPoints;
-	}
-
 	/**
 	 * Allows any classes that use this interface to reset abilities, attributes, and items.
 	 * TODO: Use this method in a reset manager to run the soft-reset.
@@ -132,5 +127,10 @@ public class Player extends Actor implements Soul, Resettable {
 	public boolean isExist() {
 		return true;
 
+	}
+
+	@Override
+	public int getMaxHitPoints() {
+		return maxHitPoints;
 	}
 }

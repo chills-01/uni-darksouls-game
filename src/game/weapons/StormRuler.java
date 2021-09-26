@@ -21,7 +21,6 @@ public class StormRuler extends MeleeWeapon {
         //weapon must be charged to use.
         this.charge = 0;
         passiveSkills.add(Abilities.CRITICAL_HIT); // critical hit functionality
-        this.allowableActions.add(new ChargeAction(this));
     }
 
     public void fullyCharged(Actor actor, GameMap map) {
@@ -76,6 +75,8 @@ public class StormRuler extends MeleeWeapon {
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
         if (actor instanceof Player) {
+            // charge only available when player picks up
+            this.allowableActions.add(new ChargeAction(this));
             return new SwapWeaponAction(this);
         }
         return null;

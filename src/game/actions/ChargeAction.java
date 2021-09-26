@@ -6,6 +6,8 @@ import game.enums.Abilities;
 import game.enums.Status;
 import game.weapons.StormRuler;
 
+import javax.swing.text.SimpleAttributeSet;
+
 public class ChargeAction extends WeaponAction {
 
     public ChargeAction(WeaponItem weaponItem) {
@@ -15,7 +17,7 @@ public class ChargeAction extends WeaponAction {
     @Override
     public String execute(Actor actor, GameMap map) {
         String returnString = null;
-        if (weapon instanceof StormRuler ) {
+        if (actor.getWeapon() instanceof StormRuler) {
             if (((StormRuler) weapon).getCharge() < 3) {
                 actor.addCapability(Status.DISARM);
                 actor.removeCapability(Status.HOSTILE_TO_ENEMY);
@@ -37,7 +39,7 @@ public class ChargeAction extends WeaponAction {
 
     @Override
     public String menuDescription(Actor actor) {
-        if (actor.getWeapon() instanceof StormRuler ) {
+        if (actor.getWeapon() instanceof StormRuler) {
             return actor + " charges " + actor.getWeapon() + " | Charge: (" + ((StormRuler) weapon).getCharge() + "/3)";
         }
         else {

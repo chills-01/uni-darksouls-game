@@ -8,11 +8,10 @@ import game.interfaces.Resettable;
 
 public class EstusFlask extends ConsumableItem implements Resettable {
 
-    public EstusFlask(Player player) {
-        super("Estus Flask", 'E', false, 3, player); //cannot be dropped, hence is not portable
+    public EstusFlask() {
+        super("Estus Flask", 'E', false, 3); //cannot be dropped, hence is not portable
         this.charge = 3;
         this.allowableActions.add(new ConsumeItemAction(this));
-        this.player = player;
         registerInstance();
     }
 
