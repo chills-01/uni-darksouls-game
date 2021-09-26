@@ -2,6 +2,7 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.*;
 import game.enums.Abilities;
+import game.enums.Status;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class MeleeWeapon extends WeaponItem {
     @Override
     public int damage() {
         
-        if (passiveSkills.contains(Abilities.CRITICAL_HIT)) {
+        if (passiveSkills.contains(Abilities.CRITICAL_HIT) && !this.hasCapability(Status.DISABLE_CRITICAL_STRIKE)) {
             new Display().println("CRITICAL HIT!!");
             if (new Random().nextInt(5) < 1) { // 20% chance
                 return 2 * damage;

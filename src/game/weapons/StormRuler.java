@@ -7,6 +7,7 @@ import game.actions.SwapWeaponAction;
 import game.actions.WindSlashAction;
 import game.enemies.YhormTheGiant;
 import game.enums.Abilities;
+import game.enums.Status;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,9 +35,11 @@ public class StormRuler extends MeleeWeapon {
         for(Action action: removeItems) {
             this.allowableActions.remove(action);
         }
-        if (getTarget(actor, map) != null) {
+       /* if (getTarget(actor, map) != null) {
             this.allowableActions.add(new WindSlashAction(this, getTarget(actor, map)));
-        }
+        }*/
+
+        actor.addCapability(Status.STORMRULER_FULLY_CHARGED);
 
     }
 

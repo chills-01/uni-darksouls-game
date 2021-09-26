@@ -5,6 +5,7 @@ import game.AttackBehaviour;
 import game.FollowBehaviour;
 import game.WanderBehaviour;
 import game.actions.AttackAction;
+import game.actions.WindSlashAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
@@ -42,6 +43,10 @@ public class YhormTheGiant extends LordOfCinder{
                 behaviours.add(0, new FollowBehaviour(otherActor));
                 behaviours.add(0, new AttackBehaviour(otherActor));
                 actions.add(new AttackAction(this,direction));
+            }
+
+            if (otherActor.hasCapability(Status.STORMRULER_FULLY_CHARGED)) {
+                actions.add(new WindSlashAction((WeaponItem) otherActor.getWeapon(), this));
             }
         }
         return actions;

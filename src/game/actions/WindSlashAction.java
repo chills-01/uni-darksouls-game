@@ -17,13 +17,16 @@ public class WindSlashAction extends WeaponAction {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        weapon.addCapability(Status.DISABLE_CRITICAL_STRIKE);
         int damage = weapon.damage() * 2;
         target.hurt(damage);
         target.addCapability(Status.STUNNED);
 
 
         ((StormRuler) weapon).preRecharge();
-
+        weapon.removeCapability(Status.DISABLE_CRITICAL_STRIKE);
+        target.removeCapability(Status.STUNNED);
+        actor.removeCapability(Status.STORMRULER_FULLY_CHARGED);
         return menuDescription(actor);
 
     }
