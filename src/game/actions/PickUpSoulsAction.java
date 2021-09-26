@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.PickUpItemAction;
 
 /**
- * Modifies pickup item so that when it is picked up it transfers souls to actor
+ * Special PickupAction for picking up a Souls item
  */
 
 public class PickUpSoulsAction extends PickUpItemAction {
@@ -21,7 +21,13 @@ public class PickUpSoulsAction extends PickUpItemAction {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        item.asSoul().transferSouls(actor.asSoul());
-        return super.execute(actor, map);
+        // transfer souls to actor and removes souls item
+        try {
+            item.asSoul().transferSouls(actor.asSoul());
+            map.at(map.locationOf(actor).x(), map.locationOf(actor).y()).removeItem(item);
+            return super.execute(actor, map);
+        }catch (ClassCastException e) {
+            return e.getMessage();
+        }
     }
 }

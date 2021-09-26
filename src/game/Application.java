@@ -58,6 +58,7 @@ public class Application {
 			Location bonfireLocation = gameMap.at(38, 11); // to pass into player constructor
 			gameMap.at(bonfireLocation.x(), bonfireLocation.y()).setGround(new Bonfire());
 
+			// place player at bonfire
 			Actor player = new Player("Unkindled (Player)", '@', 100, bonfireLocation);
 			world.addPlayer(player, gameMap.at(38, 11));
 
@@ -65,11 +66,15 @@ public class Application {
 			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 5000));
 
 			//Place Skeletons on map
-			//todo add more skeletons
 			ArrayList<Integer[]> skeletonCoordinates = new ArrayList<>();
+			// coords
 			skeletonCoordinates.add(new Integer[] {10,10});
 			skeletonCoordinates.add(new Integer[] {20,20});
-
+			skeletonCoordinates.add(new Integer[] {35,7});
+			skeletonCoordinates.add(new Integer[] {46,23});
+			skeletonCoordinates.add(new Integer[] {25,18});
+			skeletonCoordinates.add(new Integer[] {13,17});
+			// placing them
 			for (Integer[] loc : skeletonCoordinates) {
 				Integer x = loc[0];
 				Integer y = loc[1];

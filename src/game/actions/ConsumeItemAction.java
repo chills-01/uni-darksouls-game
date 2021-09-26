@@ -6,6 +6,10 @@ import edu.monash.fit2099.engine.GameMap;
 import game.items.ConsumableItem;
 import game.interfaces.ConsumeAbility;
 
+/**
+ * Special action for consuming an item that heals the actor
+ */
+
 public class ConsumeItemAction extends Action {
     protected ConsumableItem item;
 
@@ -13,7 +17,8 @@ public class ConsumeItemAction extends Action {
         this.item = item;
     }
 
-    public String execute(Actor actor, GameMap Map) { //unsure about needing if statement {
+    public String execute(Actor actor, GameMap Map) {
+        // check that actor is able to consume items
         if (actor instanceof ConsumeAbility) {
             // 40 % of max hitpoints
             int healPoints = (int) (0.4 * ((ConsumeAbility) actor).getMaxHitPoints());

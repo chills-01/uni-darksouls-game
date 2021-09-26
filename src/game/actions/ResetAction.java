@@ -5,6 +5,10 @@ import game.ResetManager;
 import game.ground.Valley;
 import game.items.TokenOfSouls;
 
+/**
+ * Action to reset the game by death or rest
+ */
+
 public class ResetAction extends Action {
     private Actor actor;
     private Location bonfireLocation;

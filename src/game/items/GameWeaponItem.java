@@ -21,7 +21,7 @@ public class GameWeaponItem extends WeaponItem {
     /**
      * In this game,
      * @param actor an actor that will interact with this item
-     * @return null because
+     * @return null because we cannot drop weapons
      */
     @Override
     public DropItemAction getDropAction(Actor actor) {

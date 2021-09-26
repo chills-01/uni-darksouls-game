@@ -9,6 +9,9 @@ import game.actions.PickUpSoulsAction;
 import game.Player;
 import game.interfaces.Soul;
 
+/**
+ * Class containing token of souls functionality
+ */
 public class TokenOfSouls extends Item implements Soul, DesignOSoulsAddOn {
     int souls;
     public TokenOfSouls() {
@@ -22,11 +25,21 @@ public class TokenOfSouls extends Item implements Soul, DesignOSoulsAddOn {
         soulObject.addSouls(souls);
     }
 
+    /**
+     * item cannot be dropped
+     * @param actor an actor that will interact with this item
+     * @return no action
+     */
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
     }
 
+    /**
+     * only able to be picked up if a player interacts
+     * @param actor an actor that will interact with this item
+     * @return PickUpSouls actions if actor is player, null otherwise
+     */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
         if (actor instanceof Player) {

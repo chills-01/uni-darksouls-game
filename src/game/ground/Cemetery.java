@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Location;
 import game.enemies.Undead;
 
+/**
+ * The cemeteries placed in the gamemap
+ */
 public class Cemetery extends Ground {
     public Cemetery() {
         super('X');
@@ -21,6 +24,7 @@ public class Cemetery extends Ground {
         int chance = new java.util.Random().nextInt(upperBound);
 
         if (chance < 1 && !location.containsAnActor()) {
+            // spawn the undead
             location.addActor(new Undead("Undead"));
 
         }

@@ -12,9 +12,14 @@ import game.weapons.YhormGreatMachete;
 
 import java.util.ArrayList;
 
+/**
+ * Class for Yhorm the giant, additional functionality to enemy and LordOfCinder
+ */
+
 public class YhormTheGiant extends LordOfCinder{
     public YhormTheGiant(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+
         //creating Yhorm's Great Machete that is stored in Yhorm's inventory
         this.addItemToInventory(new YhormGreatMachete());
         this.addCapability(Abilities.WEAK_TO_STORM_RULER);
@@ -25,6 +30,13 @@ public class YhormTheGiant extends LordOfCinder{
 
     }
 
+    /**
+     * Gets allowable actions unique to Yhorm the Giant
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return actions available to player
+     */
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
         Actions actions = new Actions();
@@ -54,7 +66,6 @@ public class YhormTheGiant extends LordOfCinder{
         if (this.hitPoints < 0.5 * maxHitPoints) {
             new Display().println("EMBER FORM ACTIVATED");
             ((WeaponItem) this.getWeapon()).addCapability(Status.EMBER_FORM); // todo fix downcast
-
 
         }
         return super.playTurn(actions, lastAction, map, display);

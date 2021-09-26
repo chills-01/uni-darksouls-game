@@ -114,7 +114,6 @@ public class Player extends Actor implements Soul, Resettable, ConsumeAbility {
 	}
 	/**
 	 * Allows any classes that use this interface to reset abilities, attributes, and items.
-	 * TODO: Use this method in a reset manager to run the soft-reset.
 	 */
 	public void resetInstance() {
 		hitPoints = maxHitPoints;

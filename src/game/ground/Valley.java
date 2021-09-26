@@ -18,10 +18,17 @@ public class Valley extends Ground {
 	 */
 	@Override
 	public boolean canActorEnter(Actor actor){
-		// use already existing ENTER_FLOOR enum?
+		// only actors that can fall can enter
 		return actor.hasCapability(Abilities.FALL_FROM_VALLEY);
 	}
 
+	/**
+	 * hurts the actor if they step on the valley, instantly killing them
+	 * @param actor the Actor acting
+	 * @param location the current Location
+	 * @param direction the direction of the Ground from the Actor
+	 * @return
+	 */
 	@Override
 	public Actions allowableActions(Actor actor, Location location, String direction) {
 		if (location.getActor() == actor && actor.hasCapability(Abilities.FALL_FROM_VALLEY)) {

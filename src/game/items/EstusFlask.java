@@ -3,6 +3,9 @@ package game.items;
 import game.actions.ConsumeItemAction;
 import game.interfaces.Resettable;
 
+/**
+ * Class representing the Estus flask
+ */
 public class EstusFlask extends ConsumableItem implements Resettable {
 
     public EstusFlask() {
@@ -14,8 +17,8 @@ public class EstusFlask extends ConsumableItem implements Resettable {
 
     @Override
     public void resetInstance() {
+        // recharges the item
         this.charge = maxCharge;
-//        this.player.setHitPoints(this.player.getMaxHitPoints());
     }
 
     @Override

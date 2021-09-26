@@ -12,10 +12,23 @@ import game.interfaces.Soul;
 
 import java.util.ArrayList;
 
+/**
+ * Class to house all default enemy functonality
+ */
+
 public abstract class Enemy extends Actor implements Resettable, Soul {
+
     // Will need to change this to a collection if Enemy gets additional Behaviours.
-    protected ArrayList<Behaviour> behaviours = new ArrayList<>(); // so yhormgiant can modify to not wander
+    protected ArrayList<Behaviour> behaviours = new ArrayList<>();
     private int souls;
+
+    /**
+     *
+     * @param name actor name
+     * @param displayChar actor character to be displayed on map
+     * @param hitPoints initial amount of hitpoints
+     * @param souls initial amount of souls (souls gained when slayed)
+     */
 
     public Enemy(String name, char displayChar, int hitPoints, int souls) {
         super(name, displayChar, hitPoints);
@@ -40,9 +53,11 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
         Actions actions = new Actions();
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            // better way to do this but we want it as priority
+            // prioritising behaviours
             behaviours.add(0, new FollowBehaviour(otherActor));
             behaviours.add(0, new AttackBehaviour(otherActor));
+
+            // other actor can attack if hostile
             actions.add(new AttackAction(this,direction));
         }
         return actions;
@@ -54,7 +69,6 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
      */
 
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        // todo display hitpoints and weapon
         // loop through all behaviours
         for(game.interfaces.Behaviour Behaviour : behaviours) {
             Action action = Behaviour.getAction(this, map);
@@ -66,6 +80,7 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
 
     @Override
     public String toString() {
+        // display weapon and hitpoints
         return name  + " (" + hitPoints + "/" + maxHitPoints + "), holding: " + getWeapon().toString();
     }
 
