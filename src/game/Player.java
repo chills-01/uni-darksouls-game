@@ -74,6 +74,11 @@ public class Player extends Actor implements Soul, Resettable {
 			return new ResetAction(this, bonfireLocation, playerLocation, previousLocation);
 		}
 
+		//Check if player is disarmed
+		if (this.hasCapability(Status.DISARM)) {
+			removeCapability(Status.HOSTILE_TO_ENEMY);
+		}
+
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
