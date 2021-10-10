@@ -58,9 +58,6 @@ public class ResetManager {
                 map.removeActor((Actor) r);
             }
         }
-
-
-
     }
 
     /**

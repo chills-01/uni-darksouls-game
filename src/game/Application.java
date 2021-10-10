@@ -59,11 +59,11 @@ public class Application {
 			gameMap.at(bonfireLocation.x(), bonfireLocation.y()).setGround(new Bonfire());
 
 			// place player at bonfire
-			Actor player = new Player("Unkindled (Player)", '@', 100, bonfireLocation);
+			Actor player = new Player("Unkindled (Player)", '@', 200, bonfireLocation);
 			world.addPlayer(player, gameMap.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map
-			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 5000));
+			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
 
 			//Place Skeletons on map
 			ArrayList<Integer[]> skeletonCoordinates = new ArrayList<>();
