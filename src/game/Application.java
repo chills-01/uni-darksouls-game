@@ -10,6 +10,7 @@ import game.enemies.Skeleton;
 import game.enemies.Undead;
 import game.enemies.YhormTheGiant;
 import game.ground.*;
+import game.items.Chest;
 import game.weapons.StormRuler;
 
 /**
@@ -60,7 +61,7 @@ public class Application {
 
 			// place player at bonfire
 			Actor player = new Player("Unkindled (Player)", '@', 200, bonfireLocation);
-			world.addPlayer(player, gameMap.at(38, 11));
+			world.addPlayer(player, gameMap.at(43, 10));
 
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
@@ -83,6 +84,9 @@ public class Application {
 
 			// place storm ruler
 			gameMap.at(7, 25).addItem(new StormRuler());
+
+			// place a chest
+			gameMap.at(43, 11).addItem(new Chest(new Location(gameMap, 43, 11)));
 
 			world.run();
 
