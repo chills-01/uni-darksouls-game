@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
+import game.enemies.AldrichTheDevourer;
 import game.enemies.Skeleton;
 import game.enemies.Undead;
 import game.enemies.YhormTheGiant;
@@ -81,8 +82,13 @@ public class Application {
 				gameMap.at(x, y).addActor(new Skeleton(x, y));
 		}
 
+
+
 			// place storm ruler
 			gameMap.at(7, 25).addItem(new StormRuler());
+
+			//place Aldrich the Devourer temporarily (todo: move to second map)
+			//gameMap.at(21, 19).addActor(new AldrichTheDevourer("Aldrich the Devourer", 'A', 350));
 
 			world.run();
 
