@@ -1,7 +1,8 @@
 # Requirements for Design O'Souls - Assignment 3
 
 ## New Map and Fog Door
-* To do later
+* ~~To do later~~
+* Done
 
 ## Updated Bonfire (*Carter*)
 - [ ] Build on the current bonfire (different name, location etc)
@@ -19,8 +20,9 @@
 - [ ] Within 3 blocks for it to attack player
 
 ## Mimic / Chest 
-- [ ] Two classes - one for mimic and one for chest
-- [ ] ChestOpenAction
-- [ ] Mimic extends enemy
-- [ ] Kick weapon? (for display)
-- [ ] Dropping tokens of souls in exits?
+- [x] Two classes - one for mimic and one for chest
+- [x] ChestOpenAction
+- [x] Mimic extends enemy
+- [x] Kick weapon? (for display)
+- [x] ~~Dropping tokens of souls~~ placing mimic in exits
+- [ ] Reset functionality
