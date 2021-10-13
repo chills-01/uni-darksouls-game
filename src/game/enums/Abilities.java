@@ -8,5 +8,6 @@ public enum Abilities {
     ENTER_FLOOR, // can stand on floor
     FALL_FROM_VALLEY, // actor dies from falling
     CRITICAL_HIT, // weapons passive skill
-    WEAK_TO_STORM_RULER // Yhorm the Giant weak to weapon
+    WEAK_TO_STORM_RULER, // Yhorm the Giant weak to weapon
+    CAN_ENTER_FOG_DOOR; // player only can move through maps
 }

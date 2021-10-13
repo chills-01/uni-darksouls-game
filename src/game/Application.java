@@ -1,6 +1,5 @@
 package game;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import edu.monash.fit2099.engine.*;
 import game.enemies.AldrichTheDevourer;
 import game.enemies.Skeleton;
-import game.enemies.Undead;
 import game.enemies.YhormTheGiant;
 import game.ground.*;
 import game.weapons.StormRuler;
@@ -53,18 +51,40 @@ public class Application {
 					"...+.__..+...#+++...........................................................+...",
 					"...+.....+._.#.+.....+++++...++..............................................++.",
 					"___.......___#.++++++++++++++.+++.............................................++");
-			GameMap gameMap = new GameMap(groundFactory, map);
-			world.addGameMap(gameMap);
+			GameMap profaneCapital = new GameMap(groundFactory, map);
+			world.addGameMap(profaneCapital);
 
-			Location bonfireLocation = gameMap.at(38, 11); // to pass into player constructor
-			gameMap.at(bonfireLocation.x(), bonfireLocation.y()).setGround(new Bonfire());
+			map = Arrays.asList(
+				".+++++++++++........................................................++++++++++++",
+				"+++++.....................++....................################################",
+				"+++++..X........................................#...............................",
+				"+++...........+.....++++++......................#...............................",
+				"+++++++..............................X..++++++++#...............................",
+				"+++..........X.....+...............++++++++++...#...............................",
+				"++...............++++............++++++.........#...............................",
+				"+...................................++++++......#...............................",
+				".........................+++............++++++..########################__######",
+				"+++++.....X..............................................++++..............+++++",
+				"++++..........++++...............X............................+++++++...........",
+				"++.........................+++++...............+++.........................+++++");
+
+			GameMap anorLondo = new GameMap(groundFactory, map);
+			world.addGameMap(anorLondo);
+
+
+			Location bonfireLocation = profaneCapital.at(38, 11); // to pass into player constructor
+			profaneCapital.at(bonfireLocation.x(), bonfireLocation.y()).setGround(new Bonfire());
+
+			// placing fog doors
+			profaneCapital.at(38,25).setGround(new FogDoor(anorLondo.at(50, 0), "Anor Londo"));
+			anorLondo.at(50, 0).setGround(new FogDoor(profaneCapital.at(38,25), "Profane Capital"));
 
 			// place player at bonfire
 			Actor player = new Player("Unkindled (Player)", '@', 200, bonfireLocation);
-			world.addPlayer(player, gameMap.at(38, 11));
+			world.addPlayer(player, profaneCapital.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map
-			gameMap.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
+			profaneCapital.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
 
 			//Place Skeletons on map
 			ArrayList<Integer[]> skeletonCoordinates = new ArrayList<>();
@@ -79,13 +99,13 @@ public class Application {
 			for (Integer[] loc : skeletonCoordinates) {
 				Integer x = loc[0];
 				Integer y = loc[1];
-				gameMap.at(x, y).addActor(new Skeleton(x, y));
+				profaneCapital.at(x, y).addActor(new Skeleton(x, y));
 		}
 
 
 
 			// place storm ruler
-			gameMap.at(7, 25).addItem(new StormRuler());
+			profaneCapital.at(7, 25).addItem(new StormRuler());
 
 			//place Aldrich the Devourer temporarily (todo: move to second map)
 			//gameMap.at(21, 19).addActor(new AldrichTheDevourer("Aldrich the Devourer", 'A', 350));
