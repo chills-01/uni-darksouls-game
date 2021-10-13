@@ -35,6 +35,7 @@ public class Player extends Actor implements Soul, Resettable, ConsumeAbility {
 		this.addCapability(Abilities.REST);
 		this.addCapability(Abilities.ENTER_FLOOR);
 		this.addCapability(Abilities.FALL_FROM_VALLEY);
+		this.addCapability(Abilities.CAN_ENTER_FOG_DOOR);
 
 		// registers as resettable
 		registerInstance();
