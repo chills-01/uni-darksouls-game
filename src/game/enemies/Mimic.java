@@ -8,7 +8,7 @@ import game.weapons.NoWeapon;
 public class Mimic extends Enemy {
 //todo reset features
     /**
-     *
+     * Class for Mimic enemy
      */
     public Mimic() {
         super("Mimic", 'M', 100, 200);

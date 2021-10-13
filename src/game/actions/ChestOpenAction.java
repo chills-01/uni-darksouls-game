@@ -57,16 +57,23 @@ public class ChestOpenAction extends Action {
     }
 
     private String spawnMimic(Actor actor, GameMap map) {
+        boolean flag = false;
         List<Exit> exits = map.at(chest.getSpawnLocation().x(), chest.getSpawnLocation().y()).getExits();
         for (Exit e : exits) {
             if (e.getDestination().canActorEnter(actor) && !e.getDestination().containsAnActor()) {
-                System.out.println("trying to place");
                 map.at(e.getDestination().x(), e.getDestination().y()).addActor(new Mimic());
+                flag = true;
                 break;
-                //todo check if successful
             }
+
         }
-        return "Mimic spawned";
+        if (flag) {
+            return "Mimic spawned";
+        } else {
+            // if actor trapped then no mimic spawned
+            return "All exits occupied, Mimic nto spawned";
+        }
+
     }
 
 
