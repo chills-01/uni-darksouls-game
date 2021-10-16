@@ -71,16 +71,33 @@ public class Application {
 			GameMap anorLondo = new GameMap(groundFactory, map);
 			world.addGameMap(anorLondo);
 
+			// bonfire manager
+			BonfireManager bonfireManager = new BonfireManager();
 
-			Location bonfireLocation = profaneCapital.at(38, 11); // to pass into player constructor
-			profaneCapital.at(bonfireLocation.x(), bonfireLocation.y()).setGround(new Bonfire());
+
+			// firelink shrine bonfire
+			Location flBonfireLocation = profaneCapital.at(38, 11); // to pass into player constructor
+			Bonfire flBonfire = new Bonfire("Firelink Shrine", bonfireManager);
+			bonfireManager.addBonfire(flBonfireLocation, flBonfire);
+
+			//anor londo bonfire
+			Location alBonfireLocation = anorLondo.at(55, 0);
+			Bonfire alBonfire = new Bonfire("Anor Londo", bonfireManager);
+			bonfireManager.addBonfire(alBonfireLocation, alBonfire);
+
+			// placing in map
+			profaneCapital.at(flBonfireLocation.x(), flBonfireLocation.y()).setGround(flBonfire);
+			anorLondo.at(alBonfireLocation.x(), alBonfireLocation.y()).setGround(alBonfire);
+
+			// set initial bonfire
+			bonfireManager.setCurrentBonfire(flBonfire);
 
 			// placing fog doors
 			profaneCapital.at(38,25).setGround(new FogDoor(anorLondo.at(50, 0), "Anor Londo"));
 			anorLondo.at(50, 0).setGround(new FogDoor(profaneCapital.at(38,25), "Profane Capital"));
 
 			// place player at bonfire
-			Actor player = new Player("Unkindled (Player)", '@', 200, bonfireLocation);
+			Actor player = new Player("Unkindled (Player)", '@', 200, bonfireManager.getCurrentBonfireLocation(), bonfireManager);
 			world.addPlayer(player, profaneCapital.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map

@@ -1,6 +1,7 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
+import game.BonfireManager;
 import game.ResetManager;
 import game.ground.Valley;
 import game.items.TokenOfSouls;
@@ -14,6 +15,7 @@ public class ResetAction extends Action {
     private Location bonfireLocation;
     private Location playerLocation;
     private Location previousLocation;
+    private BonfireManager bonfireManager;
 
     public ResetAction(Actor player, Location bonfireLocation, Location playerLocation, Location previousLocation) {
         this.actor = player;
@@ -22,9 +24,18 @@ public class ResetAction extends Action {
         this.previousLocation = previousLocation;
     }
 
+    public ResetAction(Actor player, Location bonfireLocation, Location playerLocation, Location previousLocation, BonfireManager bonfireManager) {
+        this.actor = player;
+        this.bonfireLocation = bonfireLocation;
+        this.playerLocation = playerLocation;
+        this.previousLocation = previousLocation;
+        this.bonfireManager = bonfireManager;
+    }
+
+
+
 
     public String execute(Actor actor, GameMap map) {
-
         // here we should discern if this is a bonfire reset or a death
         if (! actor.isConscious()) { // if dead
             // drop token of souls
@@ -42,7 +53,7 @@ public class ResetAction extends Action {
             map.at(dropLocation.x(), dropLocation.y()).addItem(tokenOfSouls);
 
 
-            map.moveActor(actor, bonfireLocation);
+            map.moveActor(actor, bonfireManager.getCurrentBonfireLocation());
             ResetManager.getInstance().run(map);
 
 
@@ -64,6 +75,7 @@ public class ResetAction extends Action {
                     "                                                                          \n" +
                     "                                                                          \n";
         } else {
+            bonfireManager.setCurrentBonfire(bonfireManager.getBonfire(bonfireLocation));
             ResetManager.getInstance().run(map);
             return "Player reset the game";
         }
@@ -72,7 +84,7 @@ public class ResetAction extends Action {
     @Override
     // only applies to bonfire reset
     public String menuDescription(Actor actor) {
-        return "Rest at Firelink Shrine bonfire";
+        return "Rest at " + bonfireManager.getBonfire(bonfireLocation).getName()  + " bonfire";
     }
 
 }

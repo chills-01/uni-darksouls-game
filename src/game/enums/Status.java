@@ -10,5 +10,6 @@ public enum Status {
     STUNNED, // used this capability to temporarily stun actor (Yhorm the Giant)
     DISABLE_CRITICAL_STRIKE, // temporarily disable the critical strike skill
     STORMRULER_FULLY_CHARGED, //if player holds fully charged storm ruler
-    EMBER_FORM // for yhorm machete
+    EMBER_FORM, // for yhorm machete
+    BONFIRE_ACTIVE // indicates active bonfire
 }
