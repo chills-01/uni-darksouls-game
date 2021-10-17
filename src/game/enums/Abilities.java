@@ -9,5 +9,5 @@ public enum Abilities {
     FALL_FROM_VALLEY, // actor dies from falling
     CRITICAL_HIT, // weapons passive skill
     WEAK_TO_STORM_RULER, // Yhorm the Giant weak to weapon
-    CAN_DROP_TOKEN_OF_SOULS // enemies that drop token of souls
+    CAN_ENTER_FOG_DOOR; // player only can move through maps
 }
