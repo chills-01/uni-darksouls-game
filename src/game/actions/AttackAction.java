@@ -59,7 +59,7 @@ public class AttackAction extends Action {
 			Actions dropActions = new Actions();
 			// drop all items
 			for (Item item : target.getInventory())
-				dropActions.add(item.getDropAction(actor));
+				dropActions.add(item.getDropAction(target)); //fixme changed argument from actor to target
 			for (Action drop : dropActions)
 				drop.execute(target, map);
 

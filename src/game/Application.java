@@ -9,6 +9,7 @@ import game.enemies.AldrichTheDevourer;
 import game.enemies.Skeleton;
 import game.enemies.YhormTheGiant;
 import game.ground.*;
+import game.items.Chest;
 import game.weapons.StormRuler;
 
 /**
@@ -109,6 +110,9 @@ public class Application {
 
 			//place Aldrich the Devourer temporarily (todo: move to second map)
 			//gameMap.at(21, 19).addActor(new AldrichTheDevourer("Aldrich the Devourer", 'A', 350));
+
+			// place a chest
+			gameMap.at(43, 11).addItem(new Chest(new Location(gameMap, 43, 11)));
 
 			world.run();
 

@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.PickUpItemAction;
 import edu.monash.fit2099.engine.addons.DesignOSoulsAddOn;
 import game.actions.PickUpSoulsAction;
 import game.Player;
+import game.enums.Abilities;
 import game.interfaces.Soul;
 
 /**
@@ -26,16 +27,6 @@ public class TokenOfSouls extends Item implements Soul, DesignOSoulsAddOn {
     }
 
     /**
-     * item cannot be dropped
-     * @param actor an actor that will interact with this item
-     * @return no action
-     */
-    @Override
-    public DropItemAction getDropAction(Actor actor) {
-        return null;
-    }
-
-    /**
      * only able to be picked up if a player interacts
      * @param actor an actor that will interact with this item
      * @return PickUpSouls actions if actor is player, null otherwise
@@ -47,6 +38,20 @@ public class TokenOfSouls extends Item implements Soul, DesignOSoulsAddOn {
         }
         return null;
 
+    }
+
+    /**
+     * item cannot be dropped
+     * @param actor an actor that will interact with this item
+     * @return no action
+     */
+    @Override
+    public DropItemAction getDropAction(Actor actor) {
+        if (actor.hasCapability(Abilities.CAN_DROP_TOKEN_OF_SOULS) && !actor.isConscious()) {
+            return new DropItemAction(this);
+        } else {
+            return null;
+        }
     }
 
 

@@ -13,7 +13,7 @@ import game.interfaces.Soul;
 import java.util.ArrayList;
 
 /**
- * Class to house all default enemy functonality
+ * Class to house all default enemy functionality
  */
 
 public abstract class Enemy extends Actor implements Resettable, Soul {

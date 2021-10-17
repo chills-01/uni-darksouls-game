@@ -35,7 +35,6 @@ public class MeleeWeapon extends WeaponItem {
     public int damage() {
         
         if (passiveSkills.contains(Abilities.CRITICAL_HIT) && !this.hasCapability(Status.DISABLE_CRITICAL_STRIKE)) {
-            new Display().println("CRITICAL HIT!!");
             if (new Random().nextInt(5) < 1) { // 20% chance
                 new Display().println("CRITICAL HIT!!");
                 return 2 * damage;
