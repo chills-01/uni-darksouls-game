@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Transports an actor to any location across the Game World.
+ */
 public class TransportActorAction extends Action {
     Location targetLocation;
     String targetLocationName;
@@ -15,8 +18,12 @@ public class TransportActorAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        map.moveActor(actor, targetLocation);
-        return menuDescription(actor);
+        if (!targetLocation.containsAnActor() || targetLocation.getGround().canActorEnter(actor)) {
+            map.moveActor(actor, targetLocation);
+            return menuDescription(actor);
+        }
+        return actor + " cannot enter target location";
+
     }
 
     @Override

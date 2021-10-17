@@ -35,6 +35,7 @@ public abstract class Enemy extends Actor implements Resettable, Soul {
         this.souls = souls;
         behaviours.add(new WanderBehaviour()); // does by default
 
+
         //register as resettable
         registerInstance();
     }

@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.Location;
 import game.enums.Status;
 import game.ground.Bonfire;
@@ -8,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+
+/**
+ * Class that manages all the bonfires within the game, along with the player's most recent bonfire.
+ */
 public class BonfireManager {
     private HashMap<Location, Bonfire> locationToBonfire;
     private HashMap<Bonfire, Location> bonfireToLocation;
@@ -26,7 +31,13 @@ public class BonfireManager {
     }
 
     public void setCurrentBonfire(Bonfire bonfire) {
-        currentBonfire = bonfire;
+        if (locationToBonfire.containsValue(bonfire)) {
+            currentBonfire = bonfire;
+        }
+        else {
+            new Display().println("Bonfire not in manager");
+        }
+
     }
 
     public Bonfire getCurrentBonfire() {

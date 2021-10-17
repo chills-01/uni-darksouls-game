@@ -6,6 +6,10 @@ import edu.monash.fit2099.engine.GameMap;
 import game.enums.Status;
 import game.ground.Bonfire;
 
+/**
+ * Class outlining the action for lighting a bonfire, only called if bonfire is not active.
+ */
+
 public class LightBonfireAction extends Action {
     private Bonfire bonfire;
     public LightBonfireAction(Bonfire bonfire) {

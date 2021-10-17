@@ -13,7 +13,7 @@ import game.enums.Abilities;
 import game.enums.Status;
 
 /**
- *
+ * Class housing the Bonfire functionality
  */
 public class Bonfire extends Ground {
     private BonfireManager bonfireManager;
