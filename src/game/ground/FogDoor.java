@@ -2,9 +2,10 @@ package game.ground;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.TransportActorAction;
+import game.enums.Abilities;
 
 /**
- * Class housiong Fog Door functionality, allows player to transfer between maps.
+ * Class housing Fog Door functionality, allows player to transfer between maps.
  */
 
 public class FogDoor extends Ground {
@@ -34,6 +35,6 @@ public class FogDoor extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return super.canActorEnter(actor);
+        return actor.hasCapability(Abilities.CAN_ENTER_FOG_DOOR);
     }
 }
