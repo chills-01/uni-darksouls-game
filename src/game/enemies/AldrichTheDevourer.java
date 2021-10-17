@@ -3,6 +3,10 @@ package game.enemies;
 import edu.monash.fit2099.engine.*;
 import game.weapons.DarkmoonLongbow;
 
+/**
+ * Class for Aldrich The Devourer, additional functionality to enemy and LordOfCinder
+ */
+
 public class AldrichTheDevourer extends LordOfCinder{
 
 

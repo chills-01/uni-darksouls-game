@@ -12,5 +12,5 @@ public interface DesignOSoulsAddOn {
      * @return a reference to the current Actor/Ground/Item as type Soul,
      *         or null if this Actor/Ground/Item doesn't implement Soul.
      */
-    default Soul asSoul(){return this instanceof Soul ? (Soul) this : null;}
+    default Soul asSoul(){ return this instanceof Soul ? (Soul) this : null; }
 }

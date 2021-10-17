@@ -7,6 +7,10 @@ import game.enums.Status;
 
 import java.util.Random;
 
+/**
+ * Class representing the Darkmoon Longbow weapon
+ */
+
 public class DarkmoonLongbow extends MeleeWeapon{
 
     public DarkmoonLongbow() {

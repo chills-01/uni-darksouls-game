@@ -24,10 +24,6 @@ public class YhormTheGiant extends LordOfCinder{
         this.addItemToInventory(new YhormGreatMachete());
         this.addCapability(Abilities.WEAK_TO_STORM_RULER);
 
-
-
-
-
     }
 
     /**
