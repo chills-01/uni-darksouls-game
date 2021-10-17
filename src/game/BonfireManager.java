@@ -40,6 +40,10 @@ public class BonfireManager {
 
     }
 
+    /**
+     * Gets the players most recent bonfire
+     * @return Bonfire
+     */
     public Bonfire getCurrentBonfire() {
         return currentBonfire;
     }
@@ -52,6 +56,10 @@ public class BonfireManager {
         return locationToBonfire.get(location);
     }
 
+    /**
+     * Gets all the bonfires that the player has interacted with
+     * @return Collection of all bonfires with capability active.
+     */
     public Collection<Bonfire> getAllActiveBonfires() {
         Collection<Bonfire> activeBonfires = new ArrayList<>();
         for (Bonfire b : locationToBonfire.values() ) {
