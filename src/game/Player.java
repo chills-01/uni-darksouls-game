@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.*;
 import game.actions.ResetAction;
 import game.enums.Abilities;
 import game.enums.Status;
+import game.ground.Bonfire;
 import game.interfaces.ConsumeAbility;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
@@ -20,6 +21,7 @@ public class Player extends Actor implements Soul, Resettable, ConsumeAbility {
 	private Location playerLocation;
 	private Location bonfireLocation;
 	private Location previousLocation;
+	private BonfireManager bonfireManager;
 
 	/**
 	 * Constructor.
@@ -28,9 +30,10 @@ public class Player extends Actor implements Soul, Resettable, ConsumeAbility {
 	 * @param displayChar Character to represent the player in the UI
 	 * @param hitPoints   Player's starting number of hitpoints
 	 */
-	public Player(String name, char displayChar, int hitPoints, Location bonfireLocation) {
+	public Player(String name, char displayChar, int hitPoints, Location bonfireLocation, BonfireManager bonfireManager) {
 		super(name, displayChar, hitPoints);
 		this.currentSouls = 0;
+		this.bonfireManager = bonfireManager;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
 		this.addCapability(Abilities.ENTER_FLOOR);
@@ -73,7 +76,7 @@ public class Player extends Actor implements Soul, Resettable, ConsumeAbility {
 
 
 		if (!this.isConscious()) {
-			return new ResetAction(this, bonfireLocation, playerLocation, previousLocation);
+			return new ResetAction(this, bonfireLocation, playerLocation, previousLocation, bonfireManager);
 		}
 
 		//Check if player is disarmed

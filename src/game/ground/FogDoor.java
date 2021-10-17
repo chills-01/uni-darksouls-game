@@ -3,6 +3,10 @@ package game.ground;
 import edu.monash.fit2099.engine.*;
 import game.actions.TransportActorAction;
 
+/**
+ * Class housiong Fog Door functionality, allows player to transfer between maps.
+ */
+
 public class FogDoor extends Ground {
     /**
      * Constructor.
