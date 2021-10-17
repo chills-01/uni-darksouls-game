@@ -1,6 +1,15 @@
 package game.enemies;
 
+import edu.monash.fit2099.engine.*;
+import game.weapons.DarkmoonLongbow;
+
+/**
+ * Class for Aldrich The Devourer, additional functionality to enemy and LordOfCinder
+ */
+
 public class AldrichTheDevourer extends LordOfCinder{
+
+
     /**
      * Constructor.
      *
@@ -10,6 +19,12 @@ public class AldrichTheDevourer extends LordOfCinder{
      */
     public AldrichTheDevourer(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.addItemToInventory(new DarkmoonLongbow());
+        
+    }
 
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        return super.playTurn(actions, lastAction, map, display);
     }
 }
