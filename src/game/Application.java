@@ -23,7 +23,7 @@ public class Application {
 			World world = new World(new Display());
 
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery()); // changed this, put in string?
+					new Cemetery());
 
 			List<String> map = Arrays.asList(
 					"..++++++..+++...........................++++......+++.................+++.......",
@@ -61,12 +61,12 @@ public class Application {
 				"+++++..X........................................#..............#................",
 				"+++...........+.....++++++......................#.......#...........#...........",
 				"+++++++..............................X..++++++++#.#___..._...................#..",
-				"+++..........X.....+...............++++++++++...#...._..._.......#..............",
+				"+++................+...............++++++++++...#...._..._.......#..............",
 				"++...............++++............++++++.........#....#...#...........#..........",
 				"+...................................++++++......#...._..._.................#....",
 				".........................+++............++++++..########################__######",
 				"+++++.....X..............................................++++..............+++++",
-				"++++..........++++...............X............................+++++++...........",
+				"++++..........++++............................................+++++++...........",
 				"++.........................+++++...............+++.........................+++++");
 
 			GameMap anorLondo = new GameMap(groundFactory, map);
@@ -107,6 +107,7 @@ public class Application {
 			//Place Skeletons on map
 			ArrayList<Integer[]> skeletonCoordinates = new ArrayList<>();
 			// coords
+
 			skeletonCoordinates.add(new Integer[] {10,10});
 			skeletonCoordinates.add(new Integer[] {20,20});
 			skeletonCoordinates.add(new Integer[] {35,7});
@@ -118,17 +119,27 @@ public class Application {
 				Integer x = loc[0];
 				Integer y = loc[1];
 				profaneCapital.at(x, y).addActor(new Skeleton(x, y));
-		}
+			}
+
+			anorLondo.at(20, 5).addActor(new Skeleton(20, 5));
+			anorLondo.at(15, 10).addActor(new Skeleton(15, 10));
 
 
 
 			// place storm ruler
 			profaneCapital.at(7, 25).addItem(new StormRuler());
 
+			// place Aldrich the Devourer
 			anorLondo.at(59,5 ).addActor(new AldrichTheDevourer("Aldrich the Devourer", 'A', 350));
 
 			// place a chest
-			gameMap.at(43, 11).addItem(new Chest(new Location(gameMap, 43, 11)));
+			Location chestLocation = profaneCapital.at(43, 11);
+			chestLocation.addItem(new Chest(chestLocation));
+			chestLocation = profaneCapital.at(23, 5);
+			chestLocation.addItem(new Chest(chestLocation));
+			chestLocation = anorLondo.at(25, 1);
+			chestLocation.addItem(new Chest(chestLocation));
+
 
 			world.run();
 

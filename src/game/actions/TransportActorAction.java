@@ -18,7 +18,7 @@ public class TransportActorAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        if (!targetLocation.containsAnActor() || targetLocation.getGround().canActorEnter(actor)) {
+        if (!targetLocation.containsAnActor() && targetLocation.getGround().canActorEnter(actor)) {
             map.moveActor(actor, targetLocation);
             return menuDescription(actor);
         }

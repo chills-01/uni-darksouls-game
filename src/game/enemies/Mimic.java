@@ -1,7 +1,9 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import edu.monash.fit2099.engine.Location;
 import game.enums.Abilities;
+import game.items.Chest;
 import game.items.TokenOfSouls;
 import game.weapons.NoWeapon;
 
@@ -10,8 +12,13 @@ public class Mimic extends Enemy {
     /**
      * Class for Mimic enemy
      */
-    public Mimic() {
+
+    private Location chestLocation; // location of initial chest
+    public Mimic(Location chestLocation) {
         super("Mimic", 'M', 100, 200);
+        this.chestLocation = chestLocation;
+
+
         addTokensToInventory();
         addCapability(Abilities.CAN_DROP_TOKEN_OF_SOULS);
     }
@@ -31,5 +38,19 @@ public class Mimic extends Enemy {
             tokenOfSouls.addSouls(100);
             addItemToInventory(tokenOfSouls);
         }
+    }
+
+    @Override
+    public boolean isExist() {
+        return false;
+    }
+
+    @Override
+    public void resetInstance() {
+        Chest chest = new Chest(chestLocation);
+        if (!chestLocation.getItems().contains(chest)) {
+            chestLocation.addItem(chest);
+        }
+
     }
 }

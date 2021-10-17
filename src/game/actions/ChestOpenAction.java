@@ -61,7 +61,7 @@ public class ChestOpenAction extends Action {
         List<Exit> exits = map.at(chest.getSpawnLocation().x(), chest.getSpawnLocation().y()).getExits();
         for (Exit e : exits) {
             if (e.getDestination().canActorEnter(actor) && !e.getDestination().containsAnActor()) {
-                map.at(e.getDestination().x(), e.getDestination().y()).addActor(new Mimic());
+                map.at(e.getDestination().x(), e.getDestination().y()).addActor(new Mimic(chest.getSpawnLocation()));
                 flag = true;
                 break;
             }
