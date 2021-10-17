@@ -12,7 +12,6 @@ public class DarkmoonLongbow extends MeleeWeapon{
     public DarkmoonLongbow() {
         super("Darkmoon Longbow", '3', 70, "hits", 80);
         passiveSkills.add(Abilities.CRITICAL_HIT);
-        passiveSkills.add(Abilities.RANGED_WEAPON);
     }
 
 

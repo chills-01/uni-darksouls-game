@@ -81,8 +81,7 @@ public class Application {
 
 			// place player at bonfire
 			Actor player = new Player("Unkindled (Player)", '@', 200, bonfireLocation);
-			//world.addPlayer(player, profaneCapital.at(38, 11));
-			world.addPlayer(player, anorLondo.at(59, 7));
+			world.addPlayer(player, profaneCapital.at(38, 11));
 
 			// Place Yhorm the Giant/boss in the map
 			profaneCapital.at(6, 25).addActor(new YhormTheGiant("Yhorm the Giant", 'Y', 500));
@@ -108,7 +107,6 @@ public class Application {
 			// place storm ruler
 			profaneCapital.at(7, 25).addItem(new StormRuler());
 
-			//place Aldrich the Devourer temporarily (todo: move to second map)
 			anorLondo.at(59,5 ).addActor(new AldrichTheDevourer("Aldrich the Devourer", 'A', 350));
 
 			world.run();

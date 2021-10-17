@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.*;
 import game.weapons.DarkmoonLongbow;
 
 public class AldrichTheDevourer extends LordOfCinder{
+
+
     /**
      * Constructor.
      *
@@ -17,4 +19,8 @@ public class AldrichTheDevourer extends LordOfCinder{
         
     }
 
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        return super.playTurn(actions, lastAction, map, display);
+    }
 }

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.enemies.AldrichTheDevourer;
 import game.enums.Status;
+import game.weapons.DarkmoonLongbow;
 
 /**
  * Behaviour that enables an NPC to attack another actor
@@ -23,7 +24,7 @@ public class AttackBehaviour extends FollowBehaviour {
         if(!map.contains(target) || !map.contains(actor))
             return null;
 
-        if (actor instanceof AldrichTheDevourer) {
+        if (actor.getWeapon() instanceof DarkmoonLongbow) { //can abstract this to instance of ranged weapon for future design
             Location here = map.locationOf(actor);
             Location there = map.locationOf(target);
 
@@ -36,7 +37,7 @@ public class AttackBehaviour extends FollowBehaviour {
                 for (int x : xs) {
                     for (int y : ys) {
                         if (map.at(x, y).getGround().blocksThrownObjects()) {
-                            new Display().println(actor + " attempted to attack " + target + "but was blocked by a " + map.at(x, y).getGround());
+                            new Display().println(actor + " attempted to attack " + target + "but was blocked.");
                             return null;
                         }
                     }
